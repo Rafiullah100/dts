@@ -59,7 +59,7 @@ struct PendingView: View {
                 VStack(spacing: 20){
                     
                     
-                    ForEach(0 ..< 4) { item in
+//                    ForEach(0 ..< 4) { item in
                     
                         HStack(alignment: .center){
                             
@@ -74,7 +74,7 @@ struct PendingView: View {
                            
                             
                         }
-                    }
+//                    }
                 }
                 .padding(.top)
                 .padding(.bottom)

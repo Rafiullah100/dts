@@ -7,22 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FA317E7B2A1761B600806F7C /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA317E7A2A1761B600806F7C /* test.swift */; };
 		FA596CC32A14B7BD004B20C1 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA596CC22A14B7BC004B20C1 /* Colors.swift */; };
 		FAEA858F2A0E2269008CE020 /* DTSAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEA858E2A0E2269008CE020 /* DTSAppApp.swift */; };
 		FAEA85912A0E2269008CE020 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEA85902A0E2269008CE020 /* ContentView.swift */; };
 		FAEA85932A0E2276008CE020 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAEA85922A0E2276008CE020 /* Assets.xcassets */; };
 		FAEA85962A0E2276008CE020 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAEA85952A0E2276008CE020 /* Preview Assets.xcassets */; };
 		FAEA85A02A0E22F3008CE020 /* PendingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEA859F2A0E22F3008CE020 /* PendingView.swift */; };
-		FAEA85A52A120738008CE020 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEA85A42A120738008CE020 /* Login.swift */; };
-		FAEA85AA2A123BB9008CE020 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEA85A92A123BB9008CE020 /* Home.swift */; };
 		FAEA9B2E2A1B4F970036700B /* Remarks.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEA9B2D2A1B4F970036700B /* Remarks.swift */; };
 		FAEA9B362A1B509D0036700B /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEA9B352A1B509D0036700B /* Header.swift */; };
-		FAEA9B3A2A1B55270036700B /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEA9B392A1B55270036700B /* File.swift */; };
+		FAEA9B3A2A1B55270036700B /* TabsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEA9B392A1B55270036700B /* TabsViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		FA317E7A2A1761B600806F7C /* test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
 		FA596CC22A14B7BC004B20C1 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		FAEA858B2A0E2269008CE020 /* DTSApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DTSApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAEA858E2A0E2269008CE020 /* DTSAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTSAppApp.swift; sourceTree = "<group>"; };
@@ -31,11 +27,9 @@
 		FAEA85952A0E2276008CE020 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		FAEA85972A0E2276008CE020 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FAEA859F2A0E22F3008CE020 /* PendingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingView.swift; sourceTree = "<group>"; };
-		FAEA85A42A120738008CE020 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
-		FAEA85A92A123BB9008CE020 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		FAEA9B2D2A1B4F970036700B /* Remarks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Remarks.swift; sourceTree = "<group>"; };
 		FAEA9B352A1B509D0036700B /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
-		FAEA9B392A1B55270036700B /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		FAEA9B392A1B55270036700B /* TabsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,8 +72,6 @@
 			children = (
 				FAEA9B342A1B50890036700B /* Components */,
 				FA596CC12A14B79D004B20C1 /* Extension */,
-				FAEA85A82A123BAD008CE020 /* Home */,
-				FAEA85A32A1206F4008CE020 /* Authentication */,
 				FAEA859E2A0E22D8008CE020 /* Reports */,
 				FAEA858E2A0E2269008CE020 /* DTSAppApp.swift */,
 				FAEA85902A0E2269008CE020 /* ContentView.swift */,
@@ -102,48 +94,23 @@
 			isa = PBXGroup;
 			children = (
 				FAEA9B302A1B4FC90036700B /* Pending */,
-				FAEA9B252A1B4F110036700B /* Remarks */,
 			);
 			path = Reports;
 			sourceTree = "<group>";
 		};
-		FAEA85A32A1206F4008CE020 /* Authentication */ = {
+		FAEA9B262A1B4F300036700B /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				FAEA85A42A120738008CE020 /* Login.swift */,
+				FAEA9B392A1B55270036700B /* TabsViewModel.swift */,
 			);
-			path = Authentication;
-			sourceTree = "<group>";
-		};
-		FAEA85A82A123BAD008CE020 /* Home */ = {
-			isa = PBXGroup;
-			children = (
-				FAEA85A92A123BB9008CE020 /* Home.swift */,
-			);
-			path = Home;
-			sourceTree = "<group>";
-		};
-		FAEA9B252A1B4F110036700B /* Remarks */ = {
-			isa = PBXGroup;
-			children = (
-				FAEA9B262A1B4F300036700B /* ModelView */,
-				FAEA9B272A1B4F430036700B /* Views */,
-			);
-			path = Remarks;
-			sourceTree = "<group>";
-		};
-		FAEA9B262A1B4F300036700B /* ModelView */ = {
-			isa = PBXGroup;
-			children = (
-				FAEA9B392A1B55270036700B /* File.swift */,
-			);
-			path = ModelView;
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		FAEA9B272A1B4F430036700B /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				FAEA9B2D2A1B4F970036700B /* Remarks.swift */,
+				FAEA859F2A0E22F3008CE020 /* PendingView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -151,26 +118,10 @@
 		FAEA9B302A1B4FC90036700B /* Pending */ = {
 			isa = PBXGroup;
 			children = (
-				FAEA9B322A1B4FEE0036700B /* ModelView */,
-				FAEA9B312A1B4FE10036700B /* Views */,
+				FAEA9B262A1B4F300036700B /* ViewModel */,
+				FAEA9B272A1B4F430036700B /* Views */,
 			);
 			path = Pending;
-			sourceTree = "<group>";
-		};
-		FAEA9B312A1B4FE10036700B /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				FAEA859F2A0E22F3008CE020 /* PendingView.swift */,
-				FA317E7A2A1761B600806F7C /* test.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		FAEA9B322A1B4FEE0036700B /* ModelView */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ModelView;
 			sourceTree = "<group>";
 		};
 		FAEA9B342A1B50890036700B /* Components */ = {
@@ -254,12 +205,9 @@
 				FAEA9B362A1B509D0036700B /* Header.swift in Sources */,
 				FA596CC32A14B7BD004B20C1 /* Colors.swift in Sources */,
 				FAEA85A02A0E22F3008CE020 /* PendingView.swift in Sources */,
-				FAEA85AA2A123BB9008CE020 /* Home.swift in Sources */,
-				FAEA9B3A2A1B55270036700B /* File.swift in Sources */,
+				FAEA9B3A2A1B55270036700B /* TabsViewModel.swift in Sources */,
 				FAEA858F2A0E2269008CE020 /* DTSAppApp.swift in Sources */,
 				FAEA9B2E2A1B4F970036700B /* Remarks.swift in Sources */,
-				FAEA85A52A120738008CE020 /* Login.swift in Sources */,
-				FA317E7B2A1761B600806F7C /* test.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

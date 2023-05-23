@@ -157,16 +157,23 @@ struct RemarksDetails: View {
                 HStack{
                     Button(action: {}, label: {
                         Text("Send Email")
+                            .font(.custom("Poppins", size: 12))
+                            .fontWeight(.semibold)
                     })
                     .frame(width: 95, height: 34)
+                    .foregroundColor(.white)
                     .background(Color.theme.ctGreen)
+                    
                     .cornerRadius(3)
                     
                     
                     Button(action: {}, label: {
                         Text("Send Email")
+                            .font(.custom("Poppins", size: 12))
+                            .fontWeight(.semibold)
                     })
                     .frame(width: 107, height: 34)
+                    .foregroundColor(.white)
                     .background(Color.theme.ctBtn)
                     .cornerRadius(3)
                 }
