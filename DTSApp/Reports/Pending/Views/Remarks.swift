@@ -13,7 +13,7 @@ struct Remarks: View {
     
     var body: some View {
         VStack{
-            Header(title: "Details Form")
+            ReportsMenuBar(MenuBarTile: "Details Form")
             
             filterView(selectedFilter: $selectedFilter)
             
@@ -21,16 +21,16 @@ struct Remarks: View {
                 RemarksDetails()
                 Spacer()
             }
-            //                else if selectedFilter == .basicInfo {
-            //                            Text("Data for second filter")
-            //                                .font(.largeTitle)
-            //                        } else if selectedFilter == .contactInfo {
-            //                            Text("Data for third filter")
-            //                                .font(.largeTitle)
-            //                        }
+            else if selectedFilter == .basicInfo {
+                BasicInfo(image: "person", title: "Submitted By:", detail: "Nasir Khan")
+                Spacer()
+            } else if selectedFilter == .contactInfo {
+                Text("Data for third filter")
+                    .font(.largeTitle)
+            }
             
             
-
+            
         }
     }
 }
@@ -52,7 +52,7 @@ struct filterView: View {
                         Text(item.title)
                             .font(.custom("Poppins", size: 18))
                             .fontWeight(.semibold)
-                            .foregroundColor(selectedFilter == item ? .black : Color.theme.lgFont)
+                            .foregroundColor(selectedFilter == item ? .black : Color.theme.lgtFont)
                         
                         if selectedFilter == item {
                             Circle()
@@ -82,7 +82,7 @@ struct filterView: View {
 
 struct RemarksDetails: View {
     @State var textFieldText: String = ""
-
+    
     var body: some View {
         VStack{
             
@@ -174,7 +174,7 @@ struct RemarksDetails: View {
                     })
                     .frame(width: 107, height: 34)
                     .foregroundColor(.white)
-                    .background(Color.theme.ctBtn)
+                    .background(Color.theme.ctLightBlue)
                     .cornerRadius(3)
                 }
             }

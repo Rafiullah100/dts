@@ -109,7 +109,7 @@ extension PendingView {
                         isExpanded.toggle()
                     }
                 }, label: {
-                    Image(isExpanded ? "collapseUp" : "collapseDown")
+                    Image(isExpanded ? "drop-up" : "drop-down")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 27, height: 27)
@@ -141,23 +141,23 @@ extension PendingView {
 
                 VStack(alignment: .leading, spacing: 15){
                     Text("Adnan Travel and Tours ")
-                        .foregroundColor(Color.theme.ctLightGray)
+                        .foregroundColor(Color.theme.lgtFont)
                         .font(.custom("Poppins", size: 10))
                         .fontWeight(.regular)
                     Text("Travel Agency")
-                        .foregroundColor(Color.theme.ctLightGray)
+                        .foregroundColor(Color.theme.lgtFont)
                         .font(.custom("Poppins", size: 10))
                         .fontWeight(.regular)
                     Text("April 12, 2023")
-                        .foregroundColor(Color.theme.ctLightGray)
+                        .foregroundColor(Color.theme.lgtFont)
                         .font(.custom("Poppins", size: 10))
                         .fontWeight(.regular)
                     Text("New")
-                        .foregroundColor(Color.theme.ctLightGray)
+                        .foregroundColor(Color.theme.lgtFont)
                         .font(.custom("Poppins", size: 10))
                         .fontWeight(.regular)
                     Text("For inspection")
-                        .foregroundColor(Color.theme.ctLightGray)
+                        .foregroundColor(Color.theme.lgtFont)
                         .font(.custom("Poppins", size: 10))
                         .fontWeight(.regular)
 
@@ -190,7 +190,7 @@ extension PendingView {
                         isExpanded.toggle()
                     }
                 }, label: {
-                    Image(isExpanded ?  "collapseUp" : "collapseDown" )
+                    Image(isExpanded ?  "drop-up" : "drop-down" )
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 27, height: 27)

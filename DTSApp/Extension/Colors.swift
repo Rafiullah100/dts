@@ -13,10 +13,9 @@ extension Color {
 }
 
 struct ColorTheme {
-    let ctGray = Color("ctGray")
     let ctGreen = Color("ctGreen")
-    let ctLightGray = Color("ctLightGray")
-    let lgFont = Color("lgFont")
-    let smFont = Color("smFont")
-    let ctBtn = Color("ctBtn")
+    let ctGray = Color("ctGray")
+    let smtFont = Color("smtFont")
+    let lgtFont = Color("lgtFont")
+    let ctLightBlue = Color("ctLightBlue")
 }
