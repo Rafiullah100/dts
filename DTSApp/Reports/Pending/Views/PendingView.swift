@@ -13,26 +13,6 @@ struct PendingView: View {
     
     var body: some View {
         VStack{
-            HStack{
-                Image("menu-black")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 24, height: 17)
-                
-                Spacer()
-                
-                Text("Pending Applications")
-                    .font(.custom("Poppins", size: 13))
-                    .fontWeight(.medium)
-                Spacer()
-                
-                Image("notification")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 16, height: 20)
-                
-            }
-            .padding()
             
             HStack{
                 Image("search-icon")
