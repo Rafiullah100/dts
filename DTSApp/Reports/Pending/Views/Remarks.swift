@@ -22,16 +22,24 @@ struct Remarks: View {
                 Spacer()
             }
             else if selectedFilter == .basicInfo {
-                BasicInfo(image: "person", title: "Submitted By:", detail: "Nasir Khan")
+                BasicInfoView()
+
                 Spacer()
+                
             } else if selectedFilter == .contactInfo {
-                Text("Data for third filter")
-                    .font(.largeTitle)
+                ContactInfoView()
+                
+                Spacer()
+            }else if selectedFilter == .legalInfo {
+                LegalInfoView()
+                
+                Spacer()
             }
             
             
             
         }
+        
     }
 }
 

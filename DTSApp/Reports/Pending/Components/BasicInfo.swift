@@ -29,7 +29,8 @@ struct BasicInfo: View {
                         .fontWeight(.regular)
                         .foregroundColor(Color.theme.smtFont)
                 }
-                Divider()
+                Divider().background(Color.theme.ctGreen)
+                
             }
             .padding(.horizontal)
     }
