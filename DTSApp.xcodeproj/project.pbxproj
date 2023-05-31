@@ -17,6 +17,7 @@
 		FA23ABF22A24A28200A61FE4 /* BasicInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA23ABF12A24A28200A61FE4 /* BasicInfoViewModel.swift */; };
 		FA596CC32A14B7BD004B20C1 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA596CC22A14B7BC004B20C1 /* Colors.swift */; };
 		FAD4F9022A272284000B061A /* AccordionDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD4F9012A272284000B061A /* AccordionDetails.swift */; };
+		FAD4F9052A273D55000B061A /* SideMenuOptionRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD4F9042A273D55000B061A /* SideMenuOptionRowView.swift */; };
 		FAEA858F2A0E2269008CE020 /* DTSAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEA858E2A0E2269008CE020 /* DTSAppApp.swift */; };
 		FAEA85912A0E2269008CE020 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEA85902A0E2269008CE020 /* ContentView.swift */; };
 		FAEA85962A0E2276008CE020 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAEA85952A0E2276008CE020 /* Preview Assets.xcassets */; };
@@ -41,6 +42,7 @@
 		FA23ABF12A24A28200A61FE4 /* BasicInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoViewModel.swift; sourceTree = "<group>"; };
 		FA596CC22A14B7BC004B20C1 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		FAD4F9012A272284000B061A /* AccordionDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccordionDetails.swift; sourceTree = "<group>"; };
+		FAD4F9042A273D55000B061A /* SideMenuOptionRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuOptionRowView.swift; sourceTree = "<group>"; };
 		FAEA858B2A0E2269008CE020 /* DTSApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DTSApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAEA858E2A0E2269008CE020 /* DTSAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTSAppApp.swift; sourceTree = "<group>"; };
 		FAEA85902A0E2269008CE020 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				18483C1D2A1E1DCC00CB2CF2 /* SideMenuView.swift */,
+				FAD4F9042A273D55000B061A /* SideMenuOptionRowView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAD4F9052A273D55000B061A /* SideMenuOptionRowView.swift in Sources */,
 				18483C102A1DEB6E00CB2CF2 /* Pending-MakeReportView.swift in Sources */,
 				FAF9166B2A25DC4E006EEBF8 /* ContactInfoViewModel.swift in Sources */,
 				FAF916682A25DC15006EEBF8 /* ContactInfoView.swift in Sources */,
