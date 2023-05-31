@@ -10,6 +10,7 @@ import SwiftUI
 struct ReportsMenuBar: View {
     @State var MenuBarTile = ""
     
+    
     var body: some View {
         HStack {
             Image("menu-black")
