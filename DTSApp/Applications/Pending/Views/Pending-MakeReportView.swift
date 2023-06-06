@@ -28,12 +28,13 @@ struct Pending_MakeReportView: View {
     @State var inspectionReportField = ""
     @State var inspectionCompilanceField = ""
     @State var expendedSection: AccordionsDataExpension = .none
-
+    @State var showMenu: Bool
     
     var body: some View {
         
         VStack {
-            ReportsMenuBar(MenuBarTile: "Make Report")
+            ReportsMenuBar(MenuBarTile: "Make Report", showMenu: $showMenu)
+                .zIndex(showMenu ? 2 : 0)
             ScrollView {
                 VStack(alignment: .leading) {
                    
@@ -189,7 +190,7 @@ struct Pending_MakeReportView: View {
 
 struct Pending_MakeReportView_Previews: PreviewProvider {
     static var previews: some View {
-        Pending_MakeReportView()
+        Pending_MakeReportView(showMenu: false)
     }
 }
 

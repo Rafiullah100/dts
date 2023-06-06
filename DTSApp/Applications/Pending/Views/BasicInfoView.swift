@@ -25,5 +25,6 @@ struct BasicInfoView: View {
 struct BasicInfoView_Previews: PreviewProvider {
     static var previews: some View {
         BasicInfoView()
+            .previewLayout(.sizeThatFits)
     }
 }

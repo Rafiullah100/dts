@@ -11,7 +11,7 @@ import SwiftUI
 struct DTSAppApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            PendingView()
         }
     }
 }

@@ -10,45 +10,48 @@ import SwiftUI
 struct AccordionDetails: View {
     @State private var isExpanded: Bool = false
     let details = PendingApplicationsViewModel.DetailsData
+    @State var showMenu: Bool
 
     var body: some View {
-        VStack(spacing: 20){
-            
-            
-//                    ForEach(0 ..< 4) { item in
-            
-                HStack(alignment: .center){
-                    
-                    if isExpanded {
-                        accordation
-                        Spacer()
-                    }else {
-                        accodationTitle
+//        NavigationView {
+            VStack(spacing: 20){
+                
+                
+    //                    ForEach(0 ..< 4) { item in
+                
+                    HStack(alignment: .center){
+                        
+                        if isExpanded {
+                            accordation
+                            Spacer()
+                        }else {
+                            accodationTitle
 
-                        .frame(maxWidth: .infinity, alignment: .leading)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                        }
+                       
+                        
                     }
-                   
-                    
-                }
-//                    }
-        }
-        .padding(.top)
-        .padding(.bottom)
-        .background(isExpanded ? Color.theme.ctGray : Color.white)
-        .padding(.horizontal)
+    //                    }
+            }
+            .padding(.top)
+            .padding(.bottom)
+            .background(isExpanded ? Color.theme.ctGray : Color.white)
+            .padding(.horizontal)
+            .navigationBarHidden(true)
+//        }
     }
 }
 
 struct AccordionDetails_Previews: PreviewProvider {
     static var previews: some View {
-        AccordionDetails()
+        AccordionDetails(showMenu: false)
     }
 }
 
  extension AccordionDetails{
 
     private var accordation: some View {
-        HStack(alignment: .center){
 
             HStack(alignment: .top) {
                 Button(action: {
@@ -60,7 +63,7 @@ struct AccordionDetails_Previews: PreviewProvider {
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 27, height: 27)
-            })
+                })
 
                 VStack(alignment: .leading, spacing: 15){
                     Text("Business Name:")
@@ -111,23 +114,27 @@ struct AccordionDetails_Previews: PreviewProvider {
 //                        .fontWeight(.regular)
 
                     HStack{
-                        Image("edit")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 10, height: 10)
-
-                        Image("document")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 10, height: 10)
+                        NavigationLink(
+                            destination: Remarks(showMenu: false),
+                            label: {
+                                Image("launch-icon")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 10, height: 10)
+                            })
+                        
+                        NavigationLink(
+                            destination: Pending_MakeReportView(showMenu: showMenu),
+                            label: {
+                                Image("create-icon")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 10, height: 10)
+                            })
+                        
                     }
-
-
                 }
                 Spacer()
-
-            }
-
         }
     }
     

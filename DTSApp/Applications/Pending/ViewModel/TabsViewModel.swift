@@ -14,31 +14,30 @@ enum detailFormtab : Int, CaseIterable {
     case basicInfo
     case contactInfo
     case legalInfo
-    case financialInfo
-    case physicalResources
-    case businessScope
-    case uploadFiles
+//    case financialInfo
+//    case physicalResources
+//    case businessScope
+//    case uploadFiles
     
     var title: String {
         switch self {
         
         case .remarks:
             return "Remarks"
-        
         case .basicInfo:
             return "Basic Info"
         case .contactInfo:
             return "Contact Info"
         case .legalInfo:
             return "Legal Info"
-        case .financialInfo:
-            return "Financial Info"
-        case .physicalResources:
-            return "Physical Resources"
-        case .businessScope:
-            return "Business Scope"
-        case .uploadFiles:
-            return "Upload Files"
+//        case .financialInfo:
+//            return "Financial Info"
+//        case .physicalResources:
+//            return "Physical Resources"
+//        case .businessScope:
+//            return "Business Scope"
+//        case .uploadFiles:
+//            return "Upload Files"
         }
     }
 }
