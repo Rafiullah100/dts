@@ -8,36 +8,31 @@
 import SwiftUI
 
 struct Remarks: View {
-    //    @State private var selectedFilter: detailFormtab = .
+    @State var showMenu: Bool
     @State private var selectedFilter: detailFormtab = .remarks
     
     var body: some View {
-        VStack{
-            ReportsMenuBar(MenuBarTile: "Details Form")
+        ZStack(alignment: .top){
+            ReportsMenuBar(MenuBarTile: "Detail", showMenu: $showMenu)
+                .zIndex(showMenu ? 2 : 0)
             
-            filterView(selectedFilter: $selectedFilter)
-            
-            if selectedFilter == .remarks {
-                RemarksDetails()
+            VStack {
+                filterView(selectedFilter: $selectedFilter)
+                
+                switch selectedFilter {
+                case .remarks :
+                    RemarksDetails()
+                case .basicInfo:
+                    BasicInfoView()
+                case .contactInfo:
+                    ContactInfoView()
+                case .legalInfo:
+                    LegalInfoView()
+                }
                 Spacer()
             }
-            else if selectedFilter == .basicInfo {
-                BasicInfoView()
-
-                Spacer()
-                
-            } else if selectedFilter == .contactInfo {
-                ContactInfoView()
-                
-                Spacer()
-            }else if selectedFilter == .legalInfo {
-                LegalInfoView()
-                
-                Spacer()
-            }
-            
-            
-            
+            .padding(.top, 50)
+            .navigationBarHidden(true)
         }
         
     }
@@ -45,7 +40,7 @@ struct Remarks: View {
 
 struct Remarks_Previews: PreviewProvider {
     static var previews: some View {
-        Remarks()
+        Remarks(showMenu: false)
     }
 }
 
@@ -105,10 +100,10 @@ struct RemarksDetails: View {
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 20, height: 20)
                     
-                    Image("line")
+                    Image("calendar-light")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(width: 1, height: 28)
+                        .frame(width: 20, height: 20)
                 })
             }
             .padding()
@@ -126,10 +121,10 @@ struct RemarksDetails: View {
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 20, height: 20)
                     
-                    Image("line")
+                    Image("watch")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(width: 1, height: 28)
+                        .frame(width: 20, height: 20)
                     
                     DatePicker("", selection: .constant(Date()), displayedComponents: .hourAndMinute)
                         
