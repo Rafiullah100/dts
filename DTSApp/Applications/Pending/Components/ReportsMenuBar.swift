@@ -12,7 +12,7 @@ struct ReportsMenuBar: View {
     @Binding var showMenu: Bool
     
     var body: some View {
-        NavigationView {
+//        NavigationView {
             ZStack (alignment: .top){
                 HStack {
                     Button(action: {
@@ -40,12 +40,12 @@ struct ReportsMenuBar: View {
                 if showMenu {
                     ZStack {
                         Color(.black)
-                            .opacity(showMenu ? 0.25 : 0.0)
+                            .opacity(0.25)
                     }
                     .onTapGesture {
-                        withAnimation(.easeInOut) {
+//                        withAnimation(.easeInOut) {
                             showMenu = false
-                        }
+//                        }
                     }
                     .ignoresSafeArea()
 //                    .zIndex(2)
@@ -54,8 +54,8 @@ struct ReportsMenuBar: View {
                 VStack(alignment: .leading) {
                     SideMenuView()
                         .frame(width: 300)
-                        .offset(x: showMenu ? 0 : -380, y: 0)
-                        .background(showMenu ? Color.white : Color.clear)
+                        .offset(x: showMenu ? 0 : -380)
+//                        .background(showMenu ? Color.white : Color.clear)
                         .ignoresSafeArea()
                     
                 }
@@ -63,7 +63,7 @@ struct ReportsMenuBar: View {
                 
             }
             .navigationBarHidden(true)
-        }
+//        }
     }
 }
 

@@ -11,7 +11,10 @@ import SwiftUI
 struct DTSAppApp: App {
     var body: some Scene {
         WindowGroup {
-            PendingView()
+            NavigationView {
+                PendingView()
+                    .navigationBarHidden(true)
+            }
         }
     }
 }

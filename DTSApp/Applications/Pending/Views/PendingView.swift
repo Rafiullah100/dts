@@ -13,7 +13,6 @@ struct PendingView: View {
     @State var showMenu = false
     
     var body: some View {
-        NavigationView {
             ZStack(alignment: .top){
                 
                 ReportsMenuBar(MenuBarTile: "Pending Application", showMenu: $showMenu)
@@ -38,8 +37,6 @@ struct PendingView: View {
                 }
                 .padding(.top, 50)
             }
-            .navigationBarHidden(true)
-        }
     }
 }
 

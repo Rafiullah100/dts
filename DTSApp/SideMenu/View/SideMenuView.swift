@@ -12,7 +12,7 @@ struct SideMenuView: View {
     
     var body: some View {
         VStack {
-            ScrollView {
+//            ScrollView {
                 Image("DTS-logo")
                     .resizable()
                     .scaledToFit()
@@ -43,6 +43,7 @@ struct SideMenuView: View {
                                     .frame(width: 15, height: 16)
                                 Text("Pending")
                                     .font(.custom("Poppins", size: 18))
+                                    .foregroundColor(Color.theme.smtFont)
                             }
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .padding()
@@ -60,6 +61,7 @@ struct SideMenuView: View {
                                     .frame(width: 15, height: 16)
                                 Text("Inspeted")
                                     .font(.custom("Poppins", size: 18))
+                                    .foregroundColor(Color.theme.smtFont)
                             }
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .padding()
@@ -76,6 +78,7 @@ struct SideMenuView: View {
                                     .frame(width: 15, height: 16)
                                 Text("Recommended")
                                     .font(.custom("Poppins", size: 18))
+                                    .foregroundColor(Color.theme.smtFont)
                             }
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .padding()
@@ -93,6 +96,7 @@ struct SideMenuView: View {
                                     .frame(width: 15, height: 16)
                                 Text("Not Recommended")
                                     .font(.custom("Poppins", size: 18))
+                                    .foregroundColor(Color.theme.smtFont)
                             }
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .padding()
@@ -101,7 +105,8 @@ struct SideMenuView: View {
                     
                 }
                 .padding(.top)
-            }
+//            }
+            Spacer()
         }
         .frame(width: getRect().width - 70)
         .frame(maxHeight: .infinity)

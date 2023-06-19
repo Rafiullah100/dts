@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeView: View {
     let spacing : CGFloat = 20
     @State private var numberOfRows = 2
+    @State var showMenu = false
     
     var body: some View {
         let columns = Array(
@@ -22,8 +23,7 @@ struct HomeView: View {
                 .ignoresSafeArea()
             
             ScrollView {
-//                ReportsMenuBar, showMenu: <#Binding<Bool>#>()
-                VStack{
+                VStack(spacing: 0){
                     HStack{
                         Image("menu")
                             .resizable()
@@ -35,7 +35,7 @@ struct HomeView: View {
                         Image("notification")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
-                            .frame(width: 40, height: 40)
+                            .frame(width: 22, height: 22)
                         
                     }
                     .padding()
@@ -53,22 +53,23 @@ struct HomeView: View {
                             .foregroundColor(.white)
                         
                     }
-                        
+                    
                     ZStack {
                         Color(.white)
+                            .clipShape(RoundedShape(corners: [.topLeft, .topRight]))
                         VStack{
-                                LazyVGrid(columns: columns, spacing: spacing) {
-                                    ForEach(0 ..< 4) { _ in
-                                        Color.theme.ctGray
-                                            .frame(height: UIScreen.main.bounds.height * 0.15)
-                                            .cornerRadius(10)
-                                    }
+                            LazyVGrid(columns: columns, spacing: spacing) {
+                                ForEach(0 ..< 4) { _ in
+                                    Color.theme.ctGray
+                                        .frame(height: UIScreen.main.bounds.height * 0.15)
+                                        .cornerRadius(10)
                                 }
-                                .offset(y: UIScreen.main.bounds.height * -0.04)
-                                .padding(.horizontal, 30)
                             }
-                            
-                            .frame(width: UIScreen.main.bounds.width)
+                            .offset(y: UIScreen.main.bounds.height * -0.06)
+                            .padding(.horizontal, 30)
+                        }
+                        
+                        .frame(width: UIScreen.main.bounds.width)
                         
                     }
                     .padding(.top, 60)
@@ -80,42 +81,74 @@ struct HomeView: View {
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
                                     .frame(width: 10, height: 48)
-    //                                .padding()
                                     .background(Color.theme.ctGreen)
-
+                                
                                 Spacer()
                                 
                                 Text("All Applications Summary")
-                                    .font(.title2)
+                                    .font(.custom("Poppins", size: 18))
+                                    .fontWeight(.medium)
                                     .frame(maxWidth: .infinity, alignment: .center)
                             }
                             .background(Color.white)
-//                            .padding()
                             
                             HStack{
                                 Image("rectangle")
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
                                     .frame(width: 10, height: 48)
-    //                                .padding()
                                     .background(Color.theme.ctGreen)
-
+                                
                                 Spacer()
                                 
                                 Text("Incomplete Applications Summary ")
-                                    .font(.title2)
+                                    .font(.custom("Poppins", size: 18))
+                                    .fontWeight(.medium)
                                     .frame(maxWidth: .infinity, alignment: .center)
                             }
                             .background(Color.white)
-//                            .padding()
+                            
+                            HStack{
+                                Image("rectangle")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 10, height: 48)
+                                    .background(Color.theme.ctGreen)
+                                
+                                Spacer()
+                                
+                                Text("Recieved Applications District Wise")
+                                    .font(.custom("Poppins", size: 18))
+                                    .fontWeight(.medium)
+                                    .frame(maxWidth: .infinity, alignment: .center)
+                            }
+                            .background(Color.white)
+                            
+                            HStack{
+                                Image("rectangle")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 10, height: 48)
+                                    .background(Color.theme.ctGreen)
+                                
+                                Spacer()
+                                
+                                Text("Inspected Applications District Wise")
+                                    .font(.custom("Poppins", size: 18))
+                                    .fontWeight(.medium)
+                                    .frame(maxWidth: .infinity, alignment: .center)
+                            }
+                            .background(Color.white)
                             
                         }
                         .padding()
                         .padding(.top, 40)
-                       
+                        
                     }
                     .background(Color.theme.ctGray)
-                    .offset(y: UIScreen.main.bounds.height * -0.02)
+                    .clipShape(RoundedShape(corners: [.topLeft, .topRight]))
+//                    .offset(y: UIScreen.main.bounds.height * -0.04)
+                    .edgesIgnoringSafeArea(.bottom)
                 }
             }
             .navigationBarHidden(true)
