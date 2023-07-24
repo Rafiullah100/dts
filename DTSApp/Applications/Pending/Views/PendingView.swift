@@ -12,28 +12,50 @@ struct PendingView: View {
     @State var title = ""
     @State var showMenu = false
     
+    @State private var pendingApplication: [PendingApplicationsModel]?
+
+    
     var body: some View {
             ZStack(alignment: .top){
                 
                 ReportsMenuBar(MenuBarTile: "Pending Application", showMenu: $showMenu)
                     .zIndex(showMenu ? 2 : 0)
                 
-                VStack {
-                    HStack{
-                        Image("search-icon")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 21, height: 21)
-                            .padding(5)
+                ScrollView {
+                    VStack {
+                        HStack{
+                            Image("search-icon")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 21, height: 21)
+                                .padding(8)
+                            
+                            TextField(title, text: $searchText)
+                                .font(.system(size: 13, weight: .light))
+                                .padding(5)
+                        }
+                        .background(Color.theme.ctGray)
+                        .cornerRadius(5)
+
+                        .padding()
                         
-                        TextField(title, text: $searchText)
-                            .font(.system(size: 13, weight: .light))
-                            .padding(5)
+                        ForEach(pendingApplication ?? [], id: \.recordID) { application in
+                            AccordionDetails(showMenu: showMenu, pendingApplication: application)
+                        }
                     }
-                    .background(Color.theme.ctGray)
-                    .padding()
-                    
-                    AccordionDetails(showMenu: showMenu)
+                    .onAppear {
+                        URLSession.shared.request(route: .pendingApplications, method: .get, parameters: ["Uid": UserDefaults.standard.departmentID ?? 0], model: [PendingApplicationsModel].self) { result in
+                            switch result {
+                            case .success(let pendingApplications):
+                                DispatchQueue.main.async {
+                                    self.pendingApplication = pendingApplications
+                                    print(self.pendingApplication ?? [])
+                                }
+                            case .failure(let error):
+                                print(error)
+                            }
+                        }
+                    }
                 }
                 .padding(.top, 50)
             }

@@ -11,6 +11,7 @@ struct BasicInfo: View {
     @State var image = ""
     @State var title = ""
     @State var detail = ""
+    @StateObject var basicNetworkModel = BasicNetworkModel()
     
     var body: some View {
             VStack(alignment: .leading) {

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SideMenuView: View {
     //    @Binding var showMenu: Bool
+   
     
     var body: some View {
         VStack {
@@ -19,7 +20,7 @@ struct SideMenuView: View {
                     .frame(width: 74, height: 76)
                     .padding(.top, 40)
                 Text("Directorate of Tourism Services Khyber Pakhtunkhwa")
-                    .font(.custom("Poppins", size: 10))
+                    .font(.caption2)
                     .fontWeight(.semibold)
                 Divider()
                     .frame(height: 1)
@@ -28,10 +29,29 @@ struct SideMenuView: View {
                 
                 VStack(alignment: .leading, spacing: 0) {
                     Text("All Applications")
-                        .font(.custom("Poppins", size: 17))
+                        .font(.headline)
                         .fontWeight(.semibold)
                         .padding(.horizontal, 30)
                         .padding(.bottom)
+                    
+                    NavigationLink(
+                        destination: HomeView(),
+                        label: {
+                            HStack {
+                                Image(systemName: "house")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 18, height: 18)
+                                    .foregroundColor(Color.theme.smtFont)
+                                Text("Home")
+                                    .font(.body)
+                                    .foregroundColor(Color.theme.smtFont)
+                            }
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding()
+                            .padding(.horizontal)
+                            .background(Color.theme.ctGray)
+                        })
                     
                     NavigationLink(
                         destination: PendingView(),
@@ -42,17 +62,17 @@ struct SideMenuView: View {
                                     .scaledToFit()
                                     .frame(width: 15, height: 16)
                                 Text("Pending")
-                                    .font(.custom("Poppins", size: 18))
+                                    .font(.body)
                                     .foregroundColor(Color.theme.smtFont)
                             }
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .padding()
                             .padding(.horizontal)
-                            .background(Color.theme.ctGray)
+//                            .background(Color.theme.ctGray)
                         })
                     
                     NavigationLink(
-                        destination: PendingView(),
+                        destination: InspectedData(),
                         label: {
                             HStack {
                                 Image("inspected-icon")
@@ -60,24 +80,7 @@ struct SideMenuView: View {
                                     .scaledToFit()
                                     .frame(width: 15, height: 16)
                                 Text("Inspeted")
-                                    .font(.custom("Poppins", size: 18))
-                                    .foregroundColor(Color.theme.smtFont)
-                            }
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .padding()
-                            .padding(.horizontal)
-                        })
-                    
-                    NavigationLink(
-                        destination: PendingView(),
-                        label: {
-                            HStack {
-                                Image("recommended-icon")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 15, height: 16)
-                                Text("Recommended")
-                                    .font(.custom("Poppins", size: 18))
+                                    .font(.body)
                                     .foregroundColor(Color.theme.smtFont)
                             }
                             .frame(maxWidth: .infinity, alignment: .leading)
@@ -87,7 +90,25 @@ struct SideMenuView: View {
                         })
                     
                     NavigationLink(
-                        destination: PendingView(),
+                        destination: RecomendedData(),
+                        label: {
+                            HStack {
+                                Image("recommended-icon")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 15, height: 16)
+                                Text("Recommended")
+                                    .font(.body)
+                                    .foregroundColor(Color.theme.smtFont)
+                            }
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding()
+                            .padding(.horizontal)
+//                            .background(Color.theme.ctGray)
+                        })
+                    
+                    NavigationLink(
+                        destination: NotRecommendedData(),
                         label: {
                             HStack {
                                 Image("not-recommended-icon")
@@ -95,12 +116,13 @@ struct SideMenuView: View {
                                     .scaledToFit()
                                     .frame(width: 15, height: 16)
                                 Text("Not Recommended")
-                                    .font(.custom("Poppins", size: 18))
+                                    .font(.body)
                                     .foregroundColor(Color.theme.smtFont)
                             }
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .padding()
                             .padding(.horizontal)
+                            .background(Color.theme.ctGray)
                         })
                     
                 }

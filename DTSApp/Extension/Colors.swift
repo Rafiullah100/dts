@@ -18,4 +18,6 @@ struct ColorTheme {
     let smtFont = Color("smtFont")
     let lgtFont = Color("lgtFont")
     let ctLightBlue = Color("ctLightBlue")
+    let divider = Color("divider")
+
 }

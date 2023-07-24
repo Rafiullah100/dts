@@ -11,14 +11,10 @@ struct AccordionDetails: View {
     @State private var isExpanded: Bool = false
     let details = PendingApplicationsViewModel.DetailsData
     @State var showMenu: Bool
-    
+    let pendingApplication: PendingApplicationsModel?
+
     var body: some View {
-        //        NavigationView {
         VStack(spacing: 20){
-            
-            
-            //                    ForEach(0 ..< 4) { item in
-            
             HStack(alignment: .center){
                 
                 if isExpanded {
@@ -26,29 +22,30 @@ struct AccordionDetails: View {
                     Spacer()
                 }else {
                     accodationTitle
-                        
+                        .padding(5)
                         .frame(maxWidth: .infinity, alignment: .leading)
+                        .background(Color.theme.ctGray)
+                        .cornerRadius(5)
                 }
-                
-                
             }
-            //                    }
         }
-        .padding(.top)
-        .padding(.bottom)
+//        .onAppear{
+//            print(pendingApplication)
+//        }
+        .padding(.top, 5)
+        .padding(.bottom, 5)
         .background(isExpanded ? Color.theme.ctGray : Color.white)
+        .cornerRadius(5)
         .padding(.horizontal)
         .navigationBarHidden(true)
-        //        }
     }
 }
 
-struct AccordionDetails_Previews: PreviewProvider {
-    static var previews: some View {
-        AccordionDetails(showMenu: false)
-            .previewLayout(.sizeThatFits)
-    }
-}
+//struct AccordionDetails_Previews: PreviewProvider {
+//    static var previews: some View {
+//        AccordionDetails(showMenu: false)
+//    }
+//}
 
 extension AccordionDetails{
     
@@ -64,49 +61,66 @@ extension AccordionDetails{
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 27, height: 27)
+                    .padding(.leading, 5)
             })
+            .padding(.top, 5)
             
             VStack(alignment: .leading, spacing: 15) {
                 Text("Business Name:")
-                    .font(.custom("Poppins", size: 10))
+                    .font(.footnote)
                     .fontWeight(.semibold)
                 Text("Business Type:")
-                    .font(.custom("Poppins", size: 10))
+                    .font(.footnote)
                     .fontWeight(.semibold)
                 Text("Inspection End Date:")
-                    .font(.custom("Poppins", size: 10))
+                    .font(.footnote)
                     .fontWeight(.semibold)
                 Text("Application Type:")
-                    .font(.custom("Poppins", size: 10))
+                    .font(.footnote)
                     .fontWeight(.semibold)
                 Text("Remarks:")
-                    .font(.custom("Poppins", size: 10))
+                    .font(.footnote)
                     .fontWeight(.semibold)
                 Text("Action:")
-                    .font(.custom("Poppins", size: 10))
+                    .font(.footnote)
                     .fontWeight(.semibold)
                 
             }
             .padding(.horizontal)
-            .padding(.top, 8)
+            .padding(.top, 12)
             Spacer()
             
             VStack(alignment: .leading, spacing: 15) {
-                ForEach(details) { item in
-                    Text(item.title)
-                        .foregroundColor(Color.theme.lgtFont)
-                        .font(.custom("Poppins", size: 10))
+//                ForEach(details) { item in
+                Text(pendingApplication?.businessName ?? "")
+                        .foregroundColor(Color.theme.smtFont)
+                        .font(.footnote)
                         .fontWeight(.regular)
-                }
+                Text(pendingApplication?.businessType ?? "")
+                    .foregroundColor(Color.theme.smtFont)
+                    .font(.footnote)
+                    .fontWeight(.regular)
+                Text(pendingApplication?.inspectionEndDate ?? "" )
+                    .foregroundColor(Color.theme.smtFont)
+                    .font(.footnote)
+                    .fontWeight(.regular)
+                Text(pendingApplication?.fileType ?? "")
+                    .foregroundColor(Color.theme.smtFont)
+                    .font(.footnote)
+                    .fontWeight(.regular)
+                Text(pendingApplication?.remarks ?? "")
+                    .foregroundColor(Color.theme.smtFont)
+                    .font(.footnote)
+                    .fontWeight(.regular)
                 
                 HStack{
                     NavigationLink(
-                        destination: Remarks(showMenu: false),
+                        destination: Remarks(showMenu: false, businessID: pendingApplication?.basicInfoID ?? ""),
                         label: {
                             Image("launch-icon")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
-                                .frame(width: 10, height: 10)
+                                .frame(width: 14, height: 14)
                         })
                     
                     NavigationLink(
@@ -115,12 +129,18 @@ extension AccordionDetails{
                             Image("create-icon")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
-                                .frame(width: 10, height: 10)
+                                .frame(width: 14, height: 14)
                         })
                     
                 }
             }
-            .padding(.top, 8)
+            .padding(.top, 12)
+            .padding(.bottom)
+            
+//            .onAppear{
+//                print(pendingApplication)
+//            }
+            
             Spacer()
         }
     }
@@ -139,17 +159,16 @@ extension AccordionDetails{
                         .frame(width: 27, height: 27)
                 })
                 Text("Inspection date:")
-                    .font(.custom("Poppins", size: 10))
+                    .font(.footnote)
                     .fontWeight(.semibold)
                     .padding(.horizontal)
                 
                 
-                Text("13 April 2023")
-                    .font(.custom("Poppins", size: 10))
+                Text(pendingApplication?.inspectionEndDate ?? "")
+                    .font(.footnote)
                     .fontWeight(.semibold)
                     .foregroundColor(Color.theme.ctGreen)
             }
-            
         }
     }
 }

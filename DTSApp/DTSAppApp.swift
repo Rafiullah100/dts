@@ -12,7 +12,7 @@ struct DTSAppApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationView {
-                PendingView()
+                LoginView()
                     .navigationBarHidden(true)
             }
         }
