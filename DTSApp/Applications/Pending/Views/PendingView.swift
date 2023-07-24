@@ -11,7 +11,8 @@ struct PendingView: View {
     @State var searchText = ""
     @State var title = ""
     @State var showMenu = false
-    
+    @State var showLoader = true
+
     @State private var pendingApplication: [PendingApplicationsModel]?
 
     
@@ -45,6 +46,7 @@ struct PendingView: View {
                     }
                     .onAppear {
                         URLSession.shared.request(route: .pendingApplications, method: .get, parameters: ["Uid": UserDefaults.standard.departmentID ?? 0], model: [PendingApplicationsModel].self) { result in
+                            self.showLoader = false
                             switch result {
                             case .success(let pendingApplications):
                                 DispatchQueue.main.async {
@@ -58,6 +60,14 @@ struct PendingView: View {
                     }
                 }
                 .padding(.top, 50)
+                
+                HStack {
+                    if showLoader{
+                        ProgressView()
+                            .frame(width:100, height: 100)
+                            .foregroundColor(Color(.red))
+                    }
+                }
             }
     }
 }
