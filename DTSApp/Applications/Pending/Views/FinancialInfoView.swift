@@ -39,16 +39,15 @@ struct FinancialInfoView: View {
                         accodationTitle
                             .padding(5)
                             .frame(maxWidth: .infinity, alignment: .leading)
-                            .background(Color.theme.ctGray)
+                            .background(UIColor.theme.cardBGView)
                             .cornerRadius(5)
                     }
                 }
                 .padding(.top, 5)
                 .padding(.bottom, 5)
-                .background(isExpanded ? Color.theme.ctGray : Color.white)
+                .background(UIColor.theme.cardBGView)
                 .cornerRadius(5)
                 .padding(.horizontal)
-                
             }
             .padding(.top)
         }
@@ -95,50 +94,16 @@ extension FinancialInfoView{
                     Text("Bank Details")
                         .font(.subheadline)
                         .fontWeight(.semibold)
+                        .foregroundColor(.primary)
+                    
                         .padding(.top, -5)
                     HStack {
                         VStack(alignment: .leading, spacing: 15) {
-                            Text("Ownership type:")
-                                .font(.footnote)
-                                .fontWeight(.semibold)
-                            
-                            Text("Name:")
-                                .font(.footnote)
-                                .fontWeight(.semibold)
-                            
-                            Text("Designation:")
-                                .font(.footnote)
-                                .fontWeight(.semibold)
-                            
-                            Text("CNIC:")
-                                .font(.footnote)
-                                .fontWeight(.semibold)
-                            
-                            Text("Share %:")
-                                .font(.footnote)
-                                .fontWeight(.semibold)
-                            
-                            Text("Contact No.:")
-                                .font(.footnote)
-                                .fontWeight(.semibold)
-                            
-                            Text("Email:")
-                                .font(.footnote)
-                                .fontWeight(.semibold)
-                        }
-                        
-                        Spacer()
-                        
-                        VStack(alignment: .leading, spacing: 15) {
-
-                            ForEach(bank ?? []) { items in
-                                CustomTextView(item: items.accountNumber ?? "")
-                                CustomTextView(item: items.accountTitle ?? "")
-                                CustomTextView(item: items.bankName ?? "")
-                                CustomTextView(item: items.branchCode ?? "")
-                                CustomTextView(item: "\(items.bankDetailID ?? 0)")
-                                CustomTextView(item: items.bankName ?? "")
-                                CustomTextView(item: items.branchCode ?? "")
+                            ForEach(bank ?? []) { bank in
+                                CardInsideView(placeHolder: "Bank Name:", value: bank.bankName ?? "")
+                                CardInsideView(placeHolder: "Branch Code:", value: bank.branchCode ?? "")
+                                CardInsideView(placeHolder: "Account Title:", value: bank.accountTitle ?? "")
+                                CardInsideView(placeHolder: "Account Number:", value: bank.accountNumber ?? "")
                             }
                         }
                         
@@ -168,10 +133,10 @@ extension FinancialInfoView{
                 Text("Bank Details")
                     .font(.footnote)
                     .fontWeight(.semibold)
-                    .padding(.horizontal)
+                    .foregroundColor(.primary)
 
+                    .padding(.horizontal)
             }
-            
         }
     }
 }
@@ -181,7 +146,7 @@ struct CustomTextView: View {
 
     var body: some View {
         Text(item)
-            .foregroundColor(Color.theme.smtFont)
+            .foregroundColor(UIColor.theme.smtFont)
             .font(.footnote)
             .fontWeight(.regular)
     }

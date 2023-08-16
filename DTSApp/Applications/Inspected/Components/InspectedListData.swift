@@ -16,15 +16,18 @@ struct InspectedListData: View {
                 Text(title)
                     .font(.custom("Poppins", size: 12))
                     .fontWeight(.semibold)
+                    .foregroundColor(.primary)
+
                 Text(detail)
                     .font(.custom("Poppins", size: 12))
                     .fontWeight(.regular)
-                    .foregroundColor(Color.theme.smtFont)
+                    .foregroundColor(.primary)
                     .frame(alignment: .leading)
                     
         }
         .padding(8)
-            Divider().background(Color.theme.divider)
+            Divider().background(UIColor.theme.divider)
+            .colorInvert()
     }
 }
 

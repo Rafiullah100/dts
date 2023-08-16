@@ -58,11 +58,11 @@ extension InspectedList {
                         .fontWeight(.regular)
                 }
             })
-            .foregroundColor(.black)
+            .foregroundColor(.primary)
         }
         .padding(8)
         .frame(maxWidth: .infinity, alignment: .leading)
-        .background(Color.theme.ctGray)
+        .background(UIColor.theme.cardBGView)
         .cornerRadius(5)
     }
     
@@ -88,22 +88,22 @@ extension InspectedList {
                             .fontWeight(.semibold)
                     }
                 })
-                .foregroundColor(.black)
+                .foregroundColor(.primary)
             }
             
                 InspectedListData(title: "Bussiness name" , detail: inspedted?.businessName ?? "")
                 InspectedListData(title: "Bussiness Type" , detail: inspedted?.businessType ?? "")
                 InspectedListData(title: "Inspection end date" , detail: inspedted?.inspectionEndDate ?? "")
                 InspectedListData(title: "Remarks" , detail: inspedted?.remarks ?? "")
-                            
-            Button(action: {}, label: {
+                 
+            NavigationLink(destination: Remarks(showMenu: false, businessID: inspedted?.basicInfoID ?? "")) {
                 Text("View Details")
                     .foregroundColor(.white)
                     .font(.custom("Poppins", size: 12))
                     .fontWeight(.semibold)
-            })
+            }
             .frame(width: UIScreen.main.bounds.width * 0.5, height: 34, alignment: .center)
-            .background(Color.theme.ctGreen)
+            .background(UIColor.theme.ctGreen)
             .cornerRadius(5)
             .shadow(color: Color.gray.opacity(0.1), radius: 3, x: 0, y: 3)
             .frame(maxWidth: .infinity, alignment: .center)
@@ -111,7 +111,7 @@ extension InspectedList {
         }
         .padding(8)
         .frame(maxWidth: .infinity, alignment: .leading)
-        .background(Color.theme.ctGray)
+        .background(UIColor.theme.cardBGView)
         .cornerRadius(5)
     }
 }

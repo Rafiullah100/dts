@@ -19,7 +19,7 @@ struct SideMenuOptionRowView: View {
             Text(viewModel.title)
                 .font(.custom("Poppins", size: 18))
                 .fontWeight(.regular)
-                .foregroundColor(Color.theme.smtFont)
+                .foregroundColor(UIColor.theme.smtFont)
         }
     }
 }

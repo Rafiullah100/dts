@@ -22,9 +22,9 @@ struct HomeView: View {
     let spacing: CGFloat = 20
     @State private var numberOfRows = 2
     @State var showMenu = false
-    @State private var homeInfo: HomeModel?
+    @State var homeInfo: HomeModel?
     @State var showLoader = true
-    
+    @State var notificationCount = 0
     init() {
         UIScrollView.appearance().bounces = false
     }
@@ -36,8 +36,8 @@ struct HomeView: View {
         ScrollView {
             ZStack {
                 
-                Color.theme.ctGreen
-                HomeMenuBar(MenuBarTile: "", showMenu: $showMenu)
+                UIColor.theme.ctGreen
+                HomeMenuBar(MenuBarTile: "", showMenu: $showMenu, buttonType: .notification, notificationCount: notificationCount)
                     .zIndex(showMenu ? 1 : 0)
                 VStack(spacing: 0) {
                     VStack {
@@ -45,7 +45,7 @@ struct HomeView: View {
                             .font(.headline)
                             .fontWeight(.medium)
                             .foregroundColor(.white)
-                        Text("\(homeInfo?.completed ?? 0)")
+                        Text("\(homeInfo?.totalInspectionAssinged ?? 0)")
                             .font(.largeTitle)
                             .fontWeight(.bold)
                             .foregroundColor(.white)
@@ -56,7 +56,7 @@ struct HomeView: View {
                     
                     VStack {
                         LazyVGrid(columns: columns, spacing: spacing) {
-                            CardView(title: "INSPECTED", numberOfApplication: homeInfo?.totalInspectionAssinged, description: "Appliations")
+                            CardView(title: "INSPECTED", numberOfApplication: homeInfo?.completed, description: "Appliations")
                             CardView(title: "IN PROCESS", numberOfApplication: homeInfo?.inCompleted, description: "For Inspection")
                             CardView(title: "THIS WEEK", numberOfApplication: homeInfo?.nextWeekComplete, description: "To Be Inspection")
                             CardView(title: "OVER DUE DATE", numberOfApplication: homeInfo?.lateApplications, description: "Inspections")
@@ -75,22 +75,34 @@ struct HomeView: View {
                                     print(error)
                                 }
                             }
+                            
+                            URLSession.shared.request(route: .notificationCount, method: .get, parameters: ["Uid": UserDefaults.standard.departmentID ?? 0], model: [NotificationCountModel].self) { result in
+                                switch result {
+                                case .success(let notif):
+                                    DispatchQueue.main.async {
+                                        notificationCount = notif[0].notificationCount
+                                    }
+                                case .failure(let error):
+                                    print(error)
+                                }
+                            }
                         }
                         
                         LazyVStack(spacing: 14) {
-                            ListCardView(title: "All Applications Summary", destination: AnyView(AllAppsView()))
-                            ListCardView(title: "Incomplete Applications Summary", destination: AnyView(IncompleteAppsView()))
+                            ListCardView(title: "All Applications Summary", destination: AnyView(AllAppsView(homeInfo: self.homeInfo)))
+                            ListCardView(title: "Incomplete Applications Summary", destination: AnyView(IncompleteAppsView(homeInfo: self.homeInfo)))
                             ListCardView(title: "Received Applications District Wise", destination: AnyView(RecievedAppsView()))
                             ListCardView(title: "Inspected Applications District Wise", destination: AnyView(InspectedAppsView()))
+                            ListCardView(title: "In-Process Applications District Wise", destination: AnyView(InProcessAppsView()))
                         }
                         .padding()
                         .padding(.top, 40)
                         .padding(.bottom, 20)
-                        .background(Color.theme.ctGray.clipShape(RoundedShape(corners: [.topLeft, .topRight])))
+                        .background(UIColor.theme.ctGray.clipShape(RoundedShape(corners: [.topLeft, .topRight])))
                         .frame(maxHeight: .infinity)
                         .edgesIgnoringSafeArea(.bottom)
                     }
-                    .background(Color.white.clipShape(RoundedShape(corners: [.topLeft, .topRight])))
+                    .background(UIColor.theme.homeGridContainerBgColor.clipShape(RoundedShape(corners: [.topLeft, .topRight])))
                     .padding(.top, 60)
                 }
                 .padding(.top, 80)
@@ -131,13 +143,19 @@ struct CardView: View {
             Text(title ?? "")
                 .font(.headline)
                 .fontWeight(.medium)
+                .foregroundColor(.primary)
+
             Text("\(numberOfApplication ?? 0)")
                 .font(.largeTitle)
                 .fontWeight(.bold)
+                .foregroundColor(.primary)
+
             Text(description ?? "")
+                .foregroundColor(.primary)
+
         }
         .frame(width: UIScreen.main.bounds.width * 0.42,height: UIScreen.main.bounds.height * 0.15)
-        .background(Color.theme.ctGray)
+        .background(UIColor.theme.ctGray)
         .cornerRadius(10)
         .onAppear {
             print(numberOfApplication ?? 0)
@@ -158,17 +176,17 @@ struct ListCardView: View {
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(width: 10)
-                        .background(Color.theme.ctGreen)
+                        .background(UIColor.theme.ctGreen)
                         .clipShape(RoundedShape(corners: [.topLeft, .bottomLeft]))
                     Spacer()
                     Text(title)
                         .font(.headline)
                         .fontWeight(.medium)
                         .frame(maxWidth: .infinity, alignment: .center)
-                        .foregroundColor(.black)
+                        .foregroundColor(.primary)
                 }
                 .frame(height: 50)
-                .background(Color.white)
+                .background(UIColor.theme.homeGridContainerBgColor)
         })
     }
 }

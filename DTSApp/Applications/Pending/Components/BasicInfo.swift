@@ -23,14 +23,15 @@ struct BasicInfo: View {
                     Text(title)
                         .font(.custom("Poppins", size: 12))
                         .fontWeight(.semibold)
+                        .foregroundColor(.primary)
                 }
                 HStack {
                     Text(detail)
                         .font(.custom("Poppins", size: 12))
                         .fontWeight(.regular)
-                        .foregroundColor(Color.theme.smtFont)
+                        .foregroundColor(UIColor.theme.smtFont)
                 }
-                Divider().background(Color.theme.ctGreen)
+                Divider().background(UIColor.theme.ctGreen)
                 
             }
             .padding(.horizontal)

@@ -24,7 +24,7 @@ struct AccordionDetails: View {
                     accodationTitle
                         .padding(5)
                         .frame(maxWidth: .infinity, alignment: .leading)
-                        .background(Color.theme.ctGray)
+                        .background(UIColor.theme.ctGray)
                         .cornerRadius(5)
                 }
             }
@@ -34,7 +34,7 @@ struct AccordionDetails: View {
 //        }
         .padding(.top, 5)
         .padding(.bottom, 5)
-        .background(isExpanded ? Color.theme.ctGray : Color.white)
+        .background(isExpanded ? UIColor.theme.cardBGView : Color.white)
         .cornerRadius(5)
         .padding(.horizontal)
         .navigationBarHidden(true)
@@ -69,21 +69,33 @@ extension AccordionDetails{
                 Text("Business Name:")
                     .font(.footnote)
                     .fontWeight(.semibold)
+                    .foregroundColor(.primary)
+
                 Text("Business Type:")
                     .font(.footnote)
                     .fontWeight(.semibold)
+                    .foregroundColor(.primary)
+
                 Text("Inspection End Date:")
                     .font(.footnote)
                     .fontWeight(.semibold)
+                    .foregroundColor(.primary)
+
                 Text("Application Type:")
                     .font(.footnote)
                     .fontWeight(.semibold)
+                    .foregroundColor(.primary)
+
                 Text("Remarks:")
                     .font(.footnote)
                     .fontWeight(.semibold)
+                    .foregroundColor(.primary)
+
                 Text("Action:")
                     .font(.footnote)
                     .fontWeight(.semibold)
+                    .foregroundColor(.primary)
+
                 
             }
             .padding(.horizontal)
@@ -93,23 +105,23 @@ extension AccordionDetails{
             VStack(alignment: .leading, spacing: 15) {
 //                ForEach(details) { item in
                 Text(pendingApplication?.businessName ?? "")
-                        .foregroundColor(Color.theme.smtFont)
+                        .foregroundColor(UIColor.theme.smtFont)
                         .font(.footnote)
                         .fontWeight(.regular)
                 Text(pendingApplication?.businessType ?? "")
-                    .foregroundColor(Color.theme.smtFont)
+                    .foregroundColor(UIColor.theme.smtFont)
                     .font(.footnote)
                     .fontWeight(.regular)
                 Text(pendingApplication?.inspectionEndDate ?? "" )
-                    .foregroundColor(Color.theme.smtFont)
+                    .foregroundColor(UIColor.theme.smtFont)
                     .font(.footnote)
                     .fontWeight(.regular)
                 Text(pendingApplication?.fileType ?? "")
-                    .foregroundColor(Color.theme.smtFont)
+                    .foregroundColor(UIColor.theme.smtFont)
                     .font(.footnote)
                     .fontWeight(.regular)
                 Text(pendingApplication?.remarks ?? "")
-                    .foregroundColor(Color.theme.smtFont)
+                    .foregroundColor(UIColor.theme.smtFont)
                     .font(.footnote)
                     .fontWeight(.regular)
                 
@@ -124,7 +136,7 @@ extension AccordionDetails{
                         })
                     
                     NavigationLink(
-                        destination: Pending_MakeReportView(showMenu: showMenu),
+                        destination: Pending_MakeReportView(showMenu: showMenu, businessID: pendingApplication?.basicInfoID ?? "", recordID: pendingApplication?.recordID ?? 0),
                         label: {
                             Image("create-icon")
                                 .resizable()
@@ -162,12 +174,14 @@ extension AccordionDetails{
                     .font(.footnote)
                     .fontWeight(.semibold)
                     .padding(.horizontal)
+                    .foregroundColor(.primary)
+
                 
                 
                 Text(pendingApplication?.inspectionEndDate ?? "")
                     .font(.footnote)
                     .fontWeight(.semibold)
-                    .foregroundColor(Color.theme.ctGreen)
+                    .foregroundColor(UIColor.theme.ctGreen)
             }
         }
     }

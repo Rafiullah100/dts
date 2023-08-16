@@ -23,8 +23,7 @@ struct Chart: UIViewRepresentable {
 
     func addData() -> PieChartData {
         let dataSet = PieChartDataSet(entries: entries)
-        dataSet.colors = [.lightGray, .systemOrange, .purple, .gray, .cyan, .red]
-        dataSet.label = "My Data"
+        dataSet.colors = [UIColor(UIColor.theme.recieved), UIColor(UIColor.theme.inspected), UIColor(UIColor.theme.inProgress), UIColor(UIColor.theme.week), UIColor(UIColor.theme.overDue)]
 
         let data = PieChartData(dataSets: [dataSet]) // Use the initializer that accepts an array of data sets
         return data

@@ -17,7 +17,7 @@ struct NotRecommendedData: View {
                 .zIndex(showMenu ? 2 : 0)
             ScrollView{
                 LazyVStack{
-                    ForEach(notRecommendedListModel ?? [], id: \.self) { item in
+                    ForEach(notRecommendedListModel ?? [], id: \.id) { item in
                         NotRecommendedList(notRecommended: item)
                     }
                 }
@@ -35,7 +35,7 @@ struct NotRecommendedData: View {
                     }
                 }
             }
-            .padding(.top, 50)
+            .padding(.top, 60)
         }
     }
 }

@@ -23,7 +23,7 @@ struct RecomendedData: View {
             ScrollView{
                 LazyVStack{
                     
-                    ForEach(recommendedListModel ?? [], id: \.self) { item in
+                    ForEach(recommendedListModel ?? [], id: \.id) { item in
                         RecommendedList(recommended: item)
                     }
                 }
@@ -44,7 +44,7 @@ struct RecomendedData: View {
                     }
                 }
             }
-            .padding(.top, 50)
+            .padding(.top, 60)
 
         }
     }

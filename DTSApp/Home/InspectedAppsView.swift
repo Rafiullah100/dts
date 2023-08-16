@@ -10,7 +10,8 @@ import SwiftUI
 struct InspectedAppsView: View {
     @Environment (\.presentationMode) private var presentationMode: Binding<PresentationMode>
     @StateObject var inspectedAppNetworkModel = InspectedNetworkViewModel()
-    
+    @State var showLoader = true
+    @State private var inspectedApplication: [Inprocess]?
     var body: some View {
         VStack {
             HStack {
@@ -25,48 +26,68 @@ struct InspectedAppsView: View {
                 
                 Spacer()
                 Text("Inspected Applications - District Wise")
+                    .foregroundColor(.primary)
+
                 Spacer()
-                Image("notification")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 18, height: 28)
+                NavigationLink(destination: NotificationView()) {
+                    Image("notification")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 25.0, height: 25.0)
+                }
             }
             .padding()
             
             
             ScrollView {
                 VStack(alignment: .leading) {
-                    ForEach(inspectedAppNetworkModel.inspectedAppModel ?? [], id: \.self) { item in
+                    ForEach(inspectedApplication ?? [], id: \.self) { item in
                         Text(item.district)
                             .font(.subheadline)
                             .fontWeight(.medium)
+                            .foregroundColor(.primary)
+
                             .padding(.horizontal)
                             .padding(.top)
                         HStack {
                             ProgressView(value: 0.5)
-                                .accentColor(Color.theme.ctGreen)
+                                .accentColor(UIColor.theme.ctGreen)
                                 .scaleEffect( y: 7.5, anchor: .center)
                                 .frame(width: UIScreen.main.bounds.width - 120, height: 15)
                             Spacer()
                             Text("\(item.number)")
-                                .foregroundColor(Color.theme.ctGreen)
+                                .foregroundColor(UIColor.theme.ctGray)
                             Text("(\(item.percentage)%)")
-                                .foregroundColor(Color.theme.ctGreen)
+                                .foregroundColor(UIColor.theme.ctGreen)
                         }
                         .padding(.horizontal)
                     }
-                    
-                    
-                    
                 }
                 .padding(.top)
                 .onAppear {
-                    inspectedAppNetworkModel.fetch()
+                    URLSession.shared.request(route: .GetInspectorCompleteChart, method: .get, parameters: ["Uid": UserDefaults.standard.departmentID ?? 0], model: ChartModel.self) { result in
+                        self.showLoader = false
+                        switch result {
+                        case .success(let application):
+                            DispatchQueue.main.async {
+                                self.inspectedApplication = application.inspected
+                            }
+                        case .failure(let error):
+                            print(error)
+                        }
+                    }
                 }
             }
             Spacer()
         }
         .navigationBarHidden(true)
+        HStack {
+            if showLoader{
+                ProgressView()
+                    .frame(width:100, height: 100)
+                    .foregroundColor(Color(.red))
+            }
+        }
     }
 }
 

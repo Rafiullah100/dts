@@ -30,6 +30,8 @@ struct Remarks: View {
                 Text("Details Form")
                     .font(.custom("Poppins", size: 14))
                     .fontWeight(.medium)
+                    .foregroundColor(.primary)
+
                 Spacer()
                 Image("notification")
                     .resizable()
@@ -54,11 +56,12 @@ struct Remarks: View {
                     case .financialInfo:
                         FinancialInfoView(businessID: businessID)
                     case .physicalResources:
-                        PhysicalResourcesView()
+                        PhysicalResourcesView(businessID: businessID)
                     case .businessScope:
                         BusinessScopeView(businessID: businessID)
-                    case .uploadFiles:
+                    case .uploadFiles: 
                         UploadedFilesView(businessID: businessID)
+                    
                     }
                     Spacer()
                 }
@@ -74,6 +77,73 @@ struct Remarks: View {
 //    }
 //}
 
+//struct filterView: View {
+//    @Binding var selectedFilter: detailFormtab
+//
+//    var body: some View {
+//        ScrollView(.horizontal, showsIndicators: false) {
+//            ScrollViewReader { scrollViewProxy in
+//                HStack(spacing: 20) {
+//                    ForEach(detailFormtab.allCases, id: \.rawValue) { item in
+//                        VStack(alignment: .center) {
+//                            Text(item.title)
+//                                .font(.custom("Poppins", size: 18))
+//                                .fontWeight(.semibold)
+//                                .foregroundColor(selectedFilter == item ? .black : Color.theme.lgtFont)
+//                                .onTapGesture {
+//                                    withAnimation {
+//                                        self.selectedFilter = item
+//                                    }
+//                                    if item != .uploadFiles {
+//                                        scrollViewProxy.scrollTo(item, anchor: .center)
+//                                    }
+//                                }
+//
+//                            if selectedFilter == item {
+//                                Circle()
+//                                    .foregroundColor(Color.theme.ctGreen)
+//                                    .frame(height: 4.5)
+//                            } else {
+//                                Circle()
+//                                    .foregroundColor(Color.clear)
+//                                    .frame(height: 4.5)
+//                            }
+//                        }
+//                        .padding(.horizontal)
+//                        .fixedSize()
+//                        .id(item)
+//                    }
+//                }
+//                .padding(.top)
+//                .onAppear {
+//                    scrollViewProxy.scrollTo(selectedFilter, anchor: .center)
+//                }
+//            }
+//        }
+//    }
+//}
+
+struct FilterTabItemView: View {
+    var title: String
+    var isSelected: Bool
+    
+    var body: some View {
+        VStack(alignment: .center) {
+            Text(title)
+                .font(.custom("Poppins", size: 18))
+                .fontWeight(.semibold)
+                .foregroundColor(isSelected ? .primary : UIColor.theme.lgtFont)
+            
+            Circle()
+                .foregroundColor(isSelected ? UIColor.theme.ctGreen : Color.clear)
+                .frame(height: 4.5)
+        }
+        .padding(.horizontal)
+        .fixedSize()
+    }
+}
+
+
 struct filterView: View {
     @Binding var selectedFilter: detailFormtab
     
@@ -82,33 +152,16 @@ struct filterView: View {
             ScrollViewReader { scrollViewProxy in
                 HStack(spacing: 20) {
                     ForEach(detailFormtab.allCases, id: \.rawValue) { item in
-                        VStack(alignment: .center) {
-                            Text(item.title)
-                                .font(.custom("Poppins", size: 18))
-                                .fontWeight(.semibold)
-                                .foregroundColor(selectedFilter == item ? .black : Color.theme.lgtFont)
-                                .onTapGesture {
-                                    withAnimation {
-                                        self.selectedFilter = item
-                                    }
-                                    if item != .uploadFiles {
-                                        scrollViewProxy.scrollTo(item, anchor: .center)
-                                    }
+                        FilterTabItemView(title: item.title, isSelected: selectedFilter == item)
+                            .onTapGesture {
+                                withAnimation {
+                                    self.selectedFilter = item
                                 }
-                            
-                            if selectedFilter == item {
-                                Circle()
-                                    .foregroundColor(Color.theme.ctGreen)
-                                    .frame(height: 4.5)
-                            } else {
-                                Circle()
-                                    .foregroundColor(Color.clear)
-                                    .frame(height: 4.5)
+                                if item != .uploadFiles {
+                                    scrollViewProxy.scrollTo(item, anchor: .center)
+                                }
                             }
-                        }
-                        .padding(.horizontal)
-                        .fixedSize()
-                        .id(item)
+                            .id(item)
                     }
                 }
                 .padding(.top)
@@ -123,7 +176,6 @@ struct filterView: View {
 
 
 struct RemarksDetails: View {
-    @State var textFieldText: String = ""
     @State var businessID: String
     @State private var remarks: RemarksModel?
     @State private var dateString: String = ""
@@ -136,6 +188,8 @@ struct RemarksDetails: View {
                 Text("Visit Date")
                     .font(.custom("Poppins", size: 12))
                     .fontWeight(.semibold)
+                    .foregroundColor(.primary)
+
                 HStack {
                     Image("calendar-light")
                         .resizable()
@@ -145,38 +199,15 @@ struct RemarksDetails: View {
                         .resizable()
                         .scaledToFit()
                         .frame(width: 1, height: 28)
-                    Text(self.dateString)
+                    Text(remarks?.uploads.inspectionEndDate ?? "")
                         .font(.custom("Poppins", size: 14))
                         .fontWeight(.medium)
+                        .foregroundColor(.primary)
+
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(10)
-                .background(Color.white)
-                .cornerRadius(5)
-                .shadow(color: Color.black.opacity(0.2), radius: 3)
-            }
-            .padding()
-            
-            VStack(alignment: .leading){
-                Text("Visit time")
-                    .font(.custom("Poppins", size: 12))
-                    .fontWeight(.semibold)
-                HStack {
-                    Image("watch")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 20, height: 20)
-                    Image("line")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 1, height: 28)
-                    Text(self.timeString)
-                        .font(.custom("Poppins", size: 14))
-                        .fontWeight(.medium)
-                }
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(10)
-                .background(Color.white)
+                .background(UIColor.theme.remarksColor)
                 .cornerRadius(5)
                 .shadow(color: Color.black.opacity(0.2), radius: 3)
             }
@@ -186,17 +217,22 @@ struct RemarksDetails: View {
                 Text("Application Remarks")
                     .font(.custom("Poppins", size: 12))
                     .fontWeight(.semibold)
+                    .foregroundColor(.primary)
+
                 
                 HStack {
-                    TextField(remarks?.uploads.remarks ?? "", text: $textFieldText)
+                    Text(remarks?.uploads.remarks ?? "")
                         .font(.custom("Poppins", size: 10))
+                        .foregroundColor(.primary)
+
                         .padding()
                 }
-                .frame(height : 124, alignment: .top)
-                .background(Color.white)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .background(UIColor.theme.remarksColor)
                 .cornerRadius(5)
                 .shadow(color: Color.black.opacity(0.2), radius: 3)
             }
+            
             .padding()
             
             VStack{
@@ -205,19 +241,22 @@ struct RemarksDetails: View {
                         Text("Send Email")
                             .font(.custom("Poppins", size: 12))
                             .fontWeight(.semibold)
+                            .foregroundColor(.primary)
+
                     })
                     .frame(width: 95, height: 34)
                     .foregroundColor(.white)
-                    .background(Color.theme.ctGreen)
+                    .background(UIColor.theme.ctGreen)
                     .cornerRadius(3)
                     Button(action: {}, label: {
                         Text("Send Email")
                             .font(.custom("Poppins", size: 12))
                             .fontWeight(.semibold)
+                            .foregroundColor(.primary)
                     })
                     .frame(width: 107, height: 34)
                     .foregroundColor(.white)
-                    .background(Color.theme.ctLightBlue)
+                    .background(UIColor.theme.ctLightBlue)
                     .cornerRadius(3)
                 }
             }

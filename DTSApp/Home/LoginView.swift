@@ -29,13 +29,17 @@ struct LoginView: View {
                     Text("Directorate of Tourism Services Khyber Pakhtunkhwa")
                         .font(.custom("Poppins", size: 10))
                         .fontWeight(.semibold)
+                        .foregroundColor(.primary)
+
                     
                     VStack{
                         Text("Login")
                             .font(.custom("Poppins", size: 19))
+                            .foregroundColor(.primary)
+
                             .bold()
                         Rectangle()
-                            .foregroundColor(Color.theme.ctGreen)
+                            .foregroundColor(UIColor.theme.ctGreen)
                             .frame(width: UIScreen.main.bounds.width * 0.5 ,height: 4)
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -45,9 +49,11 @@ struct LoginView: View {
                         HStack{
                             TextField("Email Address", text: $email)
                                 .padding(.horizontal)
+                                .foregroundColor(.primary)
+
                         }
                         .frame(height: 52)
-                        .background(Color.white)
+                        .background(UIColor.theme.textFieldBGColor)
                         .cornerRadius(5)
                         .shadow(color: Color.gray.opacity(0.3), radius: 8, x: 0, y: 5)
                         .padding(.horizontal, 30)
@@ -55,9 +61,11 @@ struct LoginView: View {
                         HStack{
                             SecureField("Password", text: $password)
                                 .padding(.horizontal)
+                                .foregroundColor(.primary)
+
                         }
                         .frame(height: 52)
-                        .background(Color.white)
+                        .background(UIColor.theme.textFieldBGColor)
                         .cornerRadius(5)
                         .shadow(color: Color.gray.opacity(0.3), radius: 8, x: 0, y: 5)
                         .padding(.horizontal, 30)
@@ -77,7 +85,7 @@ struct LoginView: View {
                                 .foregroundColor(.white)
                         })
                         .frame(width: UIScreen.main.bounds.width - 60, height: 60)
-                        .background(Color.theme.ctGreen)
+                        .background(UIColor.theme.ctGreen)
                         .cornerRadius(5)
                         .disabled(loginSuccess)
                         
@@ -109,7 +117,7 @@ struct LoginView: View {
                             Text("2018 All Rights Reserved")
                                 .font(.custom("Poppins", size: 9))
                                 .fontWeight(.light)
-                                .foregroundColor(Color.theme.smtFont)
+                                .foregroundColor(UIColor.theme.smtFont)
                         }
                     }
                     .padding(.top, 40)

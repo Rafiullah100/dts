@@ -59,10 +59,14 @@ extension NotRecommendedList {
                     Text("Assign Date:")
                         .font(.headline)
                         .fontWeight(.semibold)
+                        .foregroundColor(.primary)
+
                     
                     Text(notRecommended?.onDate ?? "")
                         .font(.headline)
                         .fontWeight(.regular)
+                        .foregroundColor(.primary)
+
                     
                 }
             })
@@ -71,7 +75,7 @@ extension NotRecommendedList {
         }
         .padding(8)
         .frame(maxWidth: .infinity, alignment: .leading)
-        .background(Color.theme.ctGray)
+        .background(UIColor.theme.ctGray)
         .cornerRadius(5)
     }
     
@@ -92,10 +96,14 @@ extension NotRecommendedList {
                         Text("Assign Date: ")
                             .font(.custom("Poppins", size: 14))
                         .fontWeight(.semibold)
+                            .foregroundColor(.primary)
+
                         
                         Text(notRecommended?.onDate ?? "")
                             .font(.custom("Poppins", size: 14))
                         .fontWeight(.semibold)
+                            .foregroundColor(.primary)
+
                     }
                 })
                 .foregroundColor(.black)
@@ -107,14 +115,14 @@ extension NotRecommendedList {
             InspectedListData(title: "date" , detail: notRecommended?.onDate ?? "")
             InspectedListData(title: "Remarks" , detail: notRecommended?.remarks ?? "")
                         
-            Button(action: {}, label: {
+            NavigationLink(destination: Remarks(showMenu: false, businessID: notRecommended?.basicInfoID ?? "")) {
                 Text("View Details")
-                    .foregroundColor(.white)
+                    .foregroundColor(.primary)
                     .font(.custom("Poppins", size: 12))
                     .fontWeight(.semibold)
-            })
+            }
             .frame(width: UIScreen.main.bounds.width * 0.5, height: 34, alignment: .center)
-            .background(Color.theme.ctGreen)
+            .background(UIColor.theme.ctGreen)
             .cornerRadius(5)
             .shadow(color: Color.gray.opacity(0.1), radius: 3, x: 0, y: 3)
             .frame(maxWidth: .infinity, alignment: .center)
@@ -122,7 +130,7 @@ extension NotRecommendedList {
         }
         .padding(8)
         .frame(maxWidth: .infinity, alignment: .leading)
-        .background(Color.theme.ctGray)
+        .background(UIColor.theme.ctGray)
         .cornerRadius(5)
     }
 }

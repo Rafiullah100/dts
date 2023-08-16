@@ -20,7 +20,7 @@ struct InspectedData: View {
             
             ScrollView {
                 LazyVStack(alignment: .leading){
-                    ForEach(InspedtedListModel ?? [], id: \.self) { item in
+                    ForEach(InspedtedListModel ?? [], id: \.id) { item in
                             InspectedList(inspedted: item)
                         }
                     }
@@ -41,7 +41,7 @@ struct InspectedData: View {
                     }
             }
             }
-            .padding(.top, 50)
+            .padding(.top, 60)
 
         }
     }

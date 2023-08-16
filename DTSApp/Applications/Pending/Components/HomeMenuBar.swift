@@ -10,7 +10,8 @@ import SwiftUI
 struct HomeMenuBar: View {
     @State var MenuBarTile = ""
     @Binding var showMenu: Bool
-    
+    @State var buttonType: ButtonType?
+    var notificationCount: Int
     var body: some View {
             ZStack (alignment: .top){
                 HStack {
@@ -28,11 +29,27 @@ struct HomeMenuBar: View {
                     Text(MenuBarTile)
                         .font(.custom("Poppins", size: 14))
                         .fontWeight(.medium)
+                        .foregroundColor(.primary)
+
                     Spacer()
-                    Image("notification-icon")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 20, height: 24)
+                    
+                    NavigationLink(destination: NotificationView()) {
+                        let icon = buttonType == .notification ? "notification-icon" : "search-icon"
+                        
+                        ZStack(alignment: .topTrailing) {
+                            Image(icon)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 25.0, height: 25.0)
+                            Text("\(notificationCount ?? 0)")
+                                .padding(.horizontal, 3)
+                                .font(.footnote)
+                                .background(Color.red)
+                                .foregroundColor(.white)
+                                .cornerRadius(10)
+                                .offset(x: 5, y: -10)
+                        }
+                    }
                 }
                 .padding()
                 .padding(.top, 40)
@@ -66,8 +83,8 @@ struct HomeMenuBar: View {
     }
 }
 
-struct HomeMenuBar_Previews: PreviewProvider {
-    static var previews: some View {
-        HomeMenuBar(showMenu: .constant((false)))
-    }
-}
+//struct HomeMenuBar_Previews: PreviewProvider {
+//    static var previews: some View {
+//        HomeMenuBar(showMenu: .constant((false)))
+//    }
+//}

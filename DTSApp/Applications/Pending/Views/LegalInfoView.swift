@@ -13,7 +13,7 @@ struct LegalInfoView: View {
     @State private var legalInfo: LegalInfo?
     @State private var legalOnwer: [LegalInfoOwner]?
     @State var businessID: String
-    @State private var isExpanded: Bool = true
+    @State private var isExpanded: Bool = false
     
     var body: some View {
         VStack{
@@ -34,13 +34,13 @@ struct LegalInfoView: View {
                         accodationTitle
                             .padding(5)
                             .frame(maxWidth: .infinity, alignment: .leading)
-                            .background(Color.theme.ctGray)
+                            .background(UIColor.theme.cardBGView)
                             .cornerRadius(5)
                     }
                 }
                 .padding(.top, 5)
                 .padding(.bottom, 5)
-                .background(isExpanded ? Color.theme.ctGray : Color.white)
+                .background(UIColor.theme.cardBGView)
                 .cornerRadius(5)
                 .padding(.horizontal)
                 
@@ -91,51 +91,23 @@ extension LegalInfoView{
                     Text("Ownership Details")
                         .font(.subheadline)
                         .fontWeight(.semibold)
+                        .foregroundColor(.primary)
+
                         .padding(.top, -5)
                     HStack {
+                                                                
                         VStack(alignment: .leading, spacing: 15) {
-                            Text("Ownership type:")
-                                .font(.footnote)
-                                .fontWeight(.semibold)
-                            
-                            Text("Name:")
-                                .font(.footnote)
-                                .fontWeight(.semibold)
-                            
-                            Text("Designation:")
-                                .font(.footnote)
-                                .fontWeight(.semibold)
-                            
-                            Text("CNIC:")
-                                .font(.footnote)
-                                .fontWeight(.semibold)
-                            
-                            Text("Share %:")
-                                .font(.footnote)
-                                .fontWeight(.semibold)
-                            
-                            Text("Contact No.:")
-                                .font(.footnote)
-                                .fontWeight(.semibold)
-                            
-                            Text("Email:")
-                                .font(.footnote)
-                                .fontWeight(.semibold)
-                        }
-                        
-                        Spacer()
-                        
-                        VStack(alignment: .leading, spacing: 15) {
-
                             ForEach(legalOnwer ?? []) { owner in
-                                CustomView(item: owner.ownerShipType )
-                                CustomView(item: owner.name )
-                                CustomView(item: owner.employeeType )
-                                CustomView(item: owner.cnic )
-                                CustomView(item: "\(owner.sharePercent )")
-                                CustomView(item: owner.contactNo )
-                                CustomView(item: owner.emailID )
-
+                                CardInsideView(placeHolder: "OWNER:", value: "")
+                                CardInsideView(placeHolder: "Ownership type:", value: owner.ownerShipType)
+                                CardInsideView(placeHolder: "Name:", value: owner.name)
+                                CardInsideView(placeHolder: "Designation:", value: owner.employeeType)
+                                CardInsideView(placeHolder: "CNIC:", value: owner.cnic)
+                                CardInsideView(placeHolder: "Share %:", value: "\(owner.sharePercent )")
+                                CardInsideView(placeHolder: "Contact No.:", value: owner.contactNo)
+                                CardInsideView(placeHolder: "Email:", value: owner.emailID)
+                                Divider()
+                                    .colorInvert()
                             }
                         }
                         
@@ -165,6 +137,8 @@ extension LegalInfoView{
                 Text("Ownership Details")
                     .font(.footnote)
                     .fontWeight(.semibold)
+                    .foregroundColor(.primary)
+
                     .padding(.horizontal)
             }
             
@@ -172,14 +146,21 @@ extension LegalInfoView{
     }
 }
 
-
-struct CustomView: View {
-    let item: String
+struct CardInsideView: View {
+    let placeHolder: String
+    let value: String
 
     var body: some View {
-        Text(item)
-            .foregroundColor(Color.theme.smtFont)
-            .font(.footnote)
-            .fontWeight(.regular)
+        HStack(spacing: 20.0) {
+            Text("\(placeHolder)")
+                .font(.footnote)
+                .fontWeight(.semibold)
+                .foregroundColor(.primary)
+                .frame(width: 130.0, alignment: .leading)
+            Text(value)
+                .foregroundColor(UIColor.theme.smtFont)
+                .font(.footnote)
+                .fontWeight(.regular)
+        }
     }
 }

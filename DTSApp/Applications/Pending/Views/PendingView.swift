@@ -35,7 +35,7 @@ struct PendingView: View {
                                 .font(.system(size: 13, weight: .light))
                                 .padding(5)
                         }
-                        .background(Color.theme.ctGray)
+                        .background(UIColor.theme.ctGray)
                         .cornerRadius(5)
 
                         .padding()

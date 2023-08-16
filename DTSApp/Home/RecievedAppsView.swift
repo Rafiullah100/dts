@@ -9,7 +9,9 @@ import SwiftUI
 
 struct RecievedAppsView: View {
     @Environment (\.presentationMode) private var presentationMode: Binding<PresentationMode>
-    
+    @State private var receivedApplication: [Inprocess]?
+    @State var showLoader = false
+
     var body: some View {
         VStack {
             HStack {
@@ -24,35 +26,67 @@ struct RecievedAppsView: View {
                 
                 Spacer()
                 Text("All Received Applications - District Wise")
+                    .foregroundColor(.primary)
+
                 Spacer()
-                Image("notification")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 18, height: 28)
+                NavigationLink(destination: NotificationView()) {
+                    Image("notification")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 25.0, height: 25.0)
+                }
             }
             .padding()
             
-            VStack(alignment: .leading) {
-                Text("Peshwar")
-                    .font(.subheadline)
-                    .fontWeight(.medium)
-                    .padding(.horizontal)
-                HStack {
-                    ProgressView(value: 0.5)
-                        .accentColor(Color.theme.ctGreen)
-                        .scaleEffect( y: 7.5, anchor: .center)
-                    Spacer()
-                    Text("27 (65 %)")
-                        .foregroundColor(Color.theme.ctGreen)
+            ScrollView {
+                VStack(alignment: .leading) {
+                    ForEach(receivedApplication ?? [], id: \.self) { item in
+                        Text(item.district)
+                            .font(.subheadline)
+                            .foregroundColor(.primary)
+
+                            .fontWeight(.medium)
+                            .padding(.horizontal)
+                            .padding(.top)
+                        HStack {
+                            ProgressView(value: 0.5)
+                                .accentColor(UIColor.theme.ctGreen)
+                                .scaleEffect( y: 7.5, anchor: .center)
+                                .frame(width: UIScreen.main.bounds.width - 120, height: 15)
+                            Spacer()
+                            Text("\(item.number)")
+                                .foregroundColor(UIColor.theme.ctGreen)
+                            Text("(\(item.percentage)%)")
+                                .foregroundColor(UIColor.theme.ctGreen)
+                        }
+                        .padding(.horizontal)
+                    }
                 }
-                .padding(.horizontal)
-                
-                
+                .padding(.top)
+                .onAppear {
+                    URLSession.shared.request(route: .GetInspectorCompleteChart, method: .get, parameters: ["Uid": UserDefaults.standard.departmentID ?? 0], model: ChartModel.self) { result in
+                        self.showLoader = false
+                        switch result {
+                        case .success(let application):
+                            DispatchQueue.main.async {
+                                self.receivedApplication = application.recieved
+                            }
+                        case .failure(let error):
+                            print(error)
+                        }
+                    }
+                }
             }
-            .padding(.top)
             Spacer()
         }
         .navigationBarHidden(true)
+        HStack {
+            if showLoader{
+                ProgressView()
+                    .frame(width:100, height: 100)
+                    .foregroundColor(Color(.red))
+            }
+        }
     }
 }
 

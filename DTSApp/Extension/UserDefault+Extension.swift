@@ -11,6 +11,7 @@ import Foundation
 extension UserDefaults {
     private enum UserDefaultsKeys: String {
         case departmentID
+        case darkMode
     }
     
     var departmentID: Int? {
@@ -19,6 +20,15 @@ extension UserDefaults {
         }
         set{
             set(newValue, forKey: UserDefaultsKeys.departmentID.rawValue)
+        }
+    }
+    
+    var darkMode: Bool? {
+        get {
+            value(forKey: UserDefaultsKeys.darkMode.rawValue) as? Bool
+        }
+        set{
+            set(newValue, forKey: UserDefaultsKeys.darkMode.rawValue)
         }
     }
 }

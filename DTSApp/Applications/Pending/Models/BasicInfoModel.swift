@@ -9,11 +9,12 @@ import Foundation
 
 // MARK: - Welcome
 struct BasicInfoModel: Codable {
-    let businessName, bussinessType, regDateTime, headofficeAddress: String?
+    let EmployeeName, businessName, bussinessType, regDateTime, headofficeAddress: String?
     let postalofficeAddress, district, telephoneNumber, emailID: String?
     let website, submittedby, mobileNumber, message: String?
 
     enum CodingKeys: String, CodingKey {
+        case EmployeeName = "Employee_Name"
         case businessName = "BusinessName"
         case bussinessType = "BussinessType"
         case regDateTime = "RegDateTime"
@@ -105,22 +106,19 @@ struct LegalInfoOwner: Codable, Identifiable {
 //    }
 //}
 
-
 struct FinancialInfoModel: Codable {
-    let financial: FinancialInfo?
-    let bank: [Bank]?
+    let financial: FinancialInfo
+    let bank: [Bank]
 }
 
 // MARK: - Bank
 struct Bank: Codable, Identifiable {
-    let id: UUID?
-
-    let bankDetailID: Int?
+    var id: UUID?
+        let bankDetailID: Int?
     let bankName, branchCode, accountTitle, accountNumber: String?
 
     enum CodingKeys: String, CodingKey {
         case id = "UUID"
-
         case bankDetailID = "Bank_Detail_ID"
         case bankName = "Bank_Name"
         case branchCode = "Branch_Code"
@@ -203,8 +201,6 @@ struct HomeModel: Codable {
     }
 }
 
-
-
 struct UploadModel: Codable {
     let uploads: Uploads
 }
@@ -216,7 +212,7 @@ struct Uploads: Codable {
     let ownerCNIC, bankCertifacate, ownerDocuments, feeDeposite: String?
     let guaranteeBankSlip, incorporationCertificate, formA, form29: String?
     let directorsCNIC, partnershipFormCertifacate, partnerCNIC: String?
-    let message: String?
+    let message: String
 
     enum CodingKeys: String, CodingKey {
         case filesID = "FilesID"
@@ -266,11 +262,14 @@ struct BussinessScopeBranchguarantee: Codable, Identifiable {
     let id: UUID?
     let scope: String?
     let guaranteeFeeForBranchOffice: Int?
+    let totalBranches, totalAmount: String?
 
     enum CodingKeys: String, CodingKey {
         case id = "UUID"
         case scope = "Scope"
         case guaranteeFeeForBranchOffice = "GuaranteeFeeForBranchOffice"
+        case totalBranches = "Total_branches"
+        case totalAmount = "Total_Amount"
     }
 }
 
@@ -302,11 +301,13 @@ struct BussinessScopeMainguarantee: Codable, Identifiable {
 
 
 struct InspectedModel: Codable, Hashable {
+    let id = UUID()
     let basicInfoID, businessName: String?
     let businessType: String?
     let assignedDate, inspectionEndDate, remarks: String?
 
     enum CodingKeys: String, CodingKey {
+        case id = "UUID"
         case basicInfoID = "Basic_Info_ID"
         case businessName = "Business_Name"
         case businessType = "BusinessType"
@@ -316,12 +317,14 @@ struct InspectedModel: Codable, Hashable {
     }
 }
 
-struct RecommendedModel: Codable, Hashable {
+struct RecommendedModel: Codable, Hashable, Identifiable {
+    let id = UUID()
     let basicInfoID, businessName: String?
     let businessType: String?
     let onDate, remarks: String?
 
     enum CodingKeys: String, CodingKey {
+        case id = "UUID"
         case basicInfoID = "Basic_Info_ID"
         case businessName = "Business_Name"
         case businessType = "BusinessType"
@@ -331,11 +334,13 @@ struct RecommendedModel: Codable, Hashable {
 }
 
 struct NotRecommendedModel: Codable, Hashable {
+    let id = UUID()
     let basicInfoID, businessName: String?
     let businessType: String?
     let onDate, remarks: String?
 
     enum CodingKeys: String, CodingKey {
+        case id = "UUID"
         case basicInfoID = "Basic_Info_ID"
         case businessName = "Business_Name"
         case businessType = "BusinessType"
@@ -347,3 +352,143 @@ struct NotRecommendedModel: Codable, Hashable {
 
 
 
+
+struct ChartModel: Codable {
+    let recieved, inspected, inprocess: [Inprocess]
+    let message: String
+}
+
+// MARK: - Inprocess
+struct Inprocess: Codable, Hashable {
+    let district: String
+    let number, percentage: Int
+
+    enum CodingKeys: String, CodingKey {
+        case district = "District"
+        case number = "Number"
+        case percentage = "Percentage"
+    }
+}
+
+
+struct NotificationModel: Codable, Hashable {
+    let inspectionID: Int?
+    let remarks, inspectionEndDate: String?
+    let fullName: String?
+    let assignedMins: Int?
+
+    enum CodingKeys: String, CodingKey {
+        case inspectionID = "InspectionId"
+        case remarks = "Remarks"
+        case inspectionEndDate = "InspectionEndDate"
+        case fullName = "Full_Name"
+        case assignedMins = "AssignedMins"
+    }
+}
+
+
+struct MakeReportModel: Codable{
+    let message: String?
+}
+
+
+
+
+
+
+struct PhysicalInfoModel: Codable, Identifiable {
+    var id: UUID?
+    let basic: Basic?
+    let vehicle: [Vehicle]?
+    let itdevice: [Itdevice]?
+    let branch: [Branch]?
+    let employee: [Employee]?
+}
+
+// MARK: - Basic
+struct Basic: Codable {
+    let selectOffices: String
+    let areaValue: Int
+    let areaID: String
+    let numberOfOffice: Int
+    let message: String
+
+    enum CodingKeys: String, CodingKey {
+        case selectOffices = "SelectOffices"
+        case areaValue = "AreaValue"
+        case areaID = "AreaID"
+        case numberOfOffice = "NumberOfOffice"
+        case message
+    }
+}
+
+// MARK: - Branch
+struct Branch: Codable, Identifiable {
+    let id = UUID()
+    let branchName, branchAddress, contactPerson, telephone: String?
+    let mobile: String?
+
+    enum CodingKeys: String, CodingKey {
+        case id = "UUID"
+        case branchName = "Branch_Name"
+        case branchAddress = "Branch_Address"
+        case contactPerson = "Contact_Person"
+        case telephone = "Telephone"
+        case mobile = "Mobile"
+    }
+}
+
+// MARK: - Employee
+struct Employee: Codable, Identifiable {
+    let id : UUID?
+    let employeeName, branchName, designationID, cnic: String?
+    let qualifacationID, experienceYear, contactNumber: String?
+
+    enum CodingKeys: String, CodingKey {
+        case id = "UUID"
+        case employeeName = "Employee_Name"
+        case branchName = "Branch_Name"
+        case designationID = "Designation_ID"
+        case cnic = "CNIC"
+        case qualifacationID = "Qualifacation_ID"
+        case experienceYear = "Experience_Year"
+        case contactNumber = "Contact_Number"
+    }
+}
+
+
+
+// MARK: - Itdevice
+struct Itdevice: Codable, Identifiable {
+    let id : UUID?
+    let numberOfComputers, numberPrinters, dsl: String?
+
+    enum CodingKeys: String, CodingKey {
+        case id = "UUID"
+        case numberOfComputers = "Number_Of_Computers"
+        case numberPrinters = "Number_Printers"
+        case dsl = "DSL"
+    }
+}
+
+// MARK: - Vehicle
+struct Vehicle: Codable, Identifiable {
+    let id: UUID?
+    let vehicleRegNo, modelYear, vehicleTypeID, vehicleNameOwned: String?
+
+    enum CodingKeys: String, CodingKey {
+        case id = "UUID"
+        case vehicleRegNo = "Vehicle_Reg_No"
+        case modelYear = "Model_Year"
+        case vehicleTypeID = "Vehicle_Type_ID"
+        case vehicleNameOwned = "Vehicle_Name_Owned"
+    }
+}
+
+
+struct NotificationCountModel: Codable {
+    let notificationCount: Int
+    enum CodingKeys: String, CodingKey {
+        case notificationCount = "NotificationCount"
+    }
+}

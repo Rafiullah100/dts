@@ -23,6 +23,11 @@ enum Route {
     case inspectedList
     case recommendedList
     case notRecommendedList
+    case GetInspectorCompleteChart
+    case notification
+    case makeReport
+    case physicalInfo
+    case notificationCount
     var description: String {
         switch self {
         case .home: return "GetTotal"
@@ -39,6 +44,11 @@ enum Route {
         case .inspectedList: return "GetInspectedInspection"
         case .recommendedList: return "GetRecomendedInspection"
         case .notRecommendedList: return "GetNotRecomendedInspection"
+        case .GetInspectorCompleteChart: return "GetInspectorCompleteChart"
+        case .notification: return "GetInspectorNotificationList"
+        case .makeReport: return "FnInspectionReport"
+        case .physicalInfo: return "GetPhysicalBasicDetails"
+        case .notificationCount: return "GetInspectorNotification"
         }
     }
 }

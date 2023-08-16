@@ -30,10 +30,13 @@
 		18483C1B2A1E1DC400CB2CF2 /* SideMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18483C1A2A1E1DC400CB2CF2 /* SideMenuViewModel.swift */; };
 		18483C1E2A1E1DCC00CB2CF2 /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18483C1D2A1E1DCC00CB2CF2 /* SideMenuView.swift */; };
 		1850C4092A2CB1AD005F5DF6 /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1850C4082A2CB1AD005F5DF6 /* RoundedCorner.swift */; };
-		19B49133688B9D0373F0B136 /* Pods_DTSApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71169DFD5D1A529D3C47A5B6 /* Pods_DTSApp.framework */; };
 		522230752A6E68F100FC87BA /* ProgressLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522230742A6E68F100FC87BA /* ProgressLoader.swift */; };
+		52294CC52A70F149005D99A1 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52294CC42A70F149005D99A1 /* NotificationView.swift */; };
+		52294CC72A714A9D005D99A1 /* DisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52294CC62A714A9D005D99A1 /* DisplayView.swift */; };
 		524654EF2A6E598C0013ACE6 /* NonRecommendedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524654EE2A6E598C0013ACE6 /* NonRecommendedData.swift */; };
 		527667EC2A67FD430064A7D6 /* RecomendedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527667EB2A67FD430064A7D6 /* RecomendedData.swift */; };
+		52A53FD32A6FC5040067128F /* InProcessAppsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A53FD22A6FC5040067128F /* InProcessAppsView.swift */; };
+		EE20E16E78200858A3BE7903 /* Pods_DTSApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB0580DB735F024AB9B12E2E /* Pods_DTSApp.framework */; };
 		FA1861D62A669B280017826C /* InspectedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1861D52A669B280017826C /* InspectedData.swift */; };
 		FA2216D32A49654E00B1503A /* AllApplicationsCharts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA2216D22A49654E00B1503A /* AllApplicationsCharts.storyboard */; };
 		FA2216D62A4965CD00B1503A /* AllApplicationsChartsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2216D52A4965CD00B1503A /* AllApplicationsChartsViewController.swift */; };
@@ -101,10 +104,13 @@
 		18483C1D2A1E1DCC00CB2CF2 /* SideMenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuView.swift; sourceTree = "<group>"; };
 		1850C4082A2CB1AD005F5DF6 /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
 		522230742A6E68F100FC87BA /* ProgressLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressLoader.swift; sourceTree = "<group>"; };
+		52294CC42A70F149005D99A1 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
+		52294CC62A714A9D005D99A1 /* DisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayView.swift; sourceTree = "<group>"; };
 		524654EE2A6E598C0013ACE6 /* NonRecommendedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonRecommendedData.swift; sourceTree = "<group>"; };
 		527667EB2A67FD430064A7D6 /* RecomendedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecomendedData.swift; sourceTree = "<group>"; };
-		71169DFD5D1A529D3C47A5B6 /* Pods_DTSApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DTSApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		52A53FD22A6FC5040067128F /* InProcessAppsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InProcessAppsView.swift; sourceTree = "<group>"; };
 		AE603B631F9B8DB2060A1364 /* Pods-DTSApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DTSApp.release.xcconfig"; path = "Target Support Files/Pods-DTSApp/Pods-DTSApp.release.xcconfig"; sourceTree = "<group>"; };
+		DB0580DB735F024AB9B12E2E /* Pods_DTSApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DTSApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA1861D52A669B280017826C /* InspectedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectedData.swift; sourceTree = "<group>"; };
 		FA2216D22A49654E00B1503A /* AllApplicationsCharts.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AllApplicationsCharts.storyboard; sourceTree = "<group>"; };
 		FA2216D52A4965CD00B1503A /* AllApplicationsChartsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllApplicationsChartsViewController.swift; sourceTree = "<group>"; };
@@ -153,7 +159,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				19B49133688B9D0373F0B136 /* Pods_DTSApp.framework in Frameworks */,
+				EE20E16E78200858A3BE7903 /* Pods_DTSApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -183,6 +189,8 @@
 				18405FBA2A5044EB00B3BB17 /* IncompleteAppsView.swift */,
 				1846ACD02A4981A700126C3F /* RecievedAppsView.swift */,
 				1846ACD32A4981BB00126C3F /* InspectedAppsView.swift */,
+				52A53FD22A6FC5040067128F /* InProcessAppsView.swift */,
+				52294CC42A70F149005D99A1 /* NotificationView.swift */,
 				18405FBF2A50457500B3BB17 /* Chart.swift */,
 				FA2216D02A49652800B1503A /* Charts */,
 			);
@@ -218,7 +226,7 @@
 		8D03D23A1F427A38FE0E7ED5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				71169DFD5D1A529D3C47A5B6 /* Pods_DTSApp.framework */,
+				DB0580DB735F024AB9B12E2E /* Pods_DTSApp.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -405,6 +413,7 @@
 				183CA7572A41830D00DE93E5 /* UploadFilesView.swift */,
 				FAEA9B2D2A1B4F970036700B /* Remarks.swift */,
 				18483C0F2A1DEB6E00CB2CF2 /* Pending-MakeReportView.swift */,
+				52294CC62A714A9D005D99A1 /* DisplayView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -558,6 +567,7 @@
 				FA9AAA142A56D15100660220 /* BasicInfoModel.swift in Sources */,
 				FAF916712A25E1DF006EEBF8 /* LegalInfoViewModel.swift in Sources */,
 				FA23ABF22A24A28200A61FE4 /* BasicInfoViewModel.swift in Sources */,
+				52A53FD32A6FC5040067128F /* InProcessAppsView.swift in Sources */,
 				FAEA85912A0E2269008CE020 /* ContentView.swift in Sources */,
 				18483C1E2A1E1DCC00CB2CF2 /* SideMenuView.swift in Sources */,
 				FA42DF5E2A559FA300154332 /* AppError.swift in Sources */,
@@ -566,6 +576,7 @@
 				183CA74E2A41824000DE93E5 /* PhysicalResourcesView.swift in Sources */,
 				FA596CC32A14B7BD004B20C1 /* Colors.swift in Sources */,
 				FA9AAA062A568F3300660220 /* LoginModel.swift in Sources */,
+				52294CC72A714A9D005D99A1 /* DisplayView.swift in Sources */,
 				FA9AAA1F2A56ECED00660220 /* UserDefault+Extension.swift in Sources */,
 				FAC80D562A5FE3510000BF29 /* BussinessAccordion.swift in Sources */,
 				FAEA85A02A0E22F3008CE020 /* PendingView.swift in Sources */,
@@ -584,6 +595,7 @@
 				1846ACD12A4981A700126C3F /* RecievedAppsView.swift in Sources */,
 				FA9AAA0A2A56BFF500660220 /* InspectedAppsModel.swift in Sources */,
 				183CA74B2A4181E600DE93E5 /* FinancialInfoView.swift in Sources */,
+				52294CC52A70F149005D99A1 /* NotificationView.swift in Sources */,
 				18483C1B2A1E1DC400CB2CF2 /* SideMenuViewModel.swift in Sources */,
 				1846ACD42A4981BC00126C3F /* InspectedAppsView.swift in Sources */,
 				183CA7482A4181A500DE93E5 /* BussinessScopeViewModel.swift in Sources */,
@@ -726,6 +738,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"DTSApp/Preview Content\"";
+				DEVELOPMENT_TEAM = 9K786374U5;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = DTSApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -748,6 +761,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"DTSApp/Preview Content\"";
+				DEVELOPMENT_TEAM = 9K786374U5;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = DTSApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;

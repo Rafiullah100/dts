@@ -15,6 +15,10 @@ struct DTSAppApp: App {
                 LoginView()
                     .navigationBarHidden(true)
             }
+            .onAppear{
+                print(UserDefaults.standard.darkMode)
+                UIApplication.shared.windows.first?.rootViewController?.overrideUserInterfaceStyle = UserDefaults.standard.darkMode ?? false ? .dark : .light
+            }
         }
     }
 }

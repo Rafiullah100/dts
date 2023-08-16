@@ -16,7 +16,7 @@ struct BasicInfoView: View {
         //            ForEach(details) { item in
         VStack {
             if let basicInfo = basicInfo{
-                BasicInfo(image: "person", title: "Submitted BY:", detail: basicInfo.businessName ?? "")
+                BasicInfo(image: "person", title: "Submitted BY:", detail: basicInfo.submittedby ?? "")
                 BasicInfo(image: "calendar", title: "Submitted Date:", detail: basicInfo.regDateTime ?? "")
                 BasicInfo(image: "district", title: "District", detail: basicInfo.district ?? "")
                 BasicInfo(image: "location-mark", title: "Head Office Address", detail: basicInfo.headofficeAddress ?? "")

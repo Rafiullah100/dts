@@ -29,6 +29,8 @@ struct ReportsMenuBar: View {
                     Text(MenuBarTile)
                         .font(.subheadline)
                         .fontWeight(.medium)
+                        .foregroundColor(.primary)
+
                     Spacer()
                     Image("search-icon")
                         .resizable()
